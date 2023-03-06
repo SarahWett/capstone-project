@@ -1,13 +1,18 @@
 import styled from "styled-components";
+import Head from "next/head";
+import Navbar from "@/components/Navigation";
+import { Heading } from "./../components/Header/index.js";
+import TextParagraph from "@/components/TextParagraph/index.js";
+import NavItems from "@/components/NavItems/index.js";
 
 export default function Home() {
   return (
     <main>
-      <Heading>🐋Capstone Whales Template🐋</Heading>
+      <Heading>MoodMeUp</Heading>
+      <TextParagraph>How are you doing today?</TextParagraph>
+      <Navbar>
+        <NavItems />
+      </Navbar>
     </main>
   );
 }
-
-const Heading = styled.h1`
-text-align: center;
-`;
