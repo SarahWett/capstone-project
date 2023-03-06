@@ -1,10 +1,11 @@
 import styled from "styled-components";
-import NavItems from "../NavItemsStandard";
+import NavItems from "../NavItems";
 
 const StyledList = styled.ul`
   display: flex;
   justify-content: space-around;
   width: 100%;
+  height: 16vh;
   position: fixed;
   bottom: 0;
   font-size: 3vh;
@@ -15,10 +16,6 @@ const StyledList = styled.ul`
   align-items: center;
 `;
 
-export default function Navbar() {
-  return (
-    <StyledList>
-      <NavItems />
-    </StyledList>
-  );
+export default function Navbar({ children }) {
+  return <StyledList>{children}</StyledList>;
 }

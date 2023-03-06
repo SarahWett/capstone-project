@@ -11,3 +11,7 @@ export const Heading = styled.h1`
   background-color: #172e4f;
   margin: auto;
 `;
+
+export default function Header({ children }) {
+  return <Heading>{children}</Heading>;
+}
