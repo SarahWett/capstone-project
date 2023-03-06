@@ -5,9 +5,9 @@ import HomeButton from "../HomeButton";
 export default function NavItems() {
   return (
     <>
-      <HomeButton />
       <DBButton />
       <AddButton />
+      <HomeButton />
     </>
   );
 }

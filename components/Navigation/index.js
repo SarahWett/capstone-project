@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import NavItems from "../NavItems";
+import NavItems from "../NavItemsStandard";
 
 const StyledList = styled.ul`
   display: flex;
@@ -9,7 +9,7 @@ const StyledList = styled.ul`
   bottom: 0;
   font-size: 3vh;
   padding: 3vh;
-  background-color: whitesmoke;
+  background-color: #d7d4ed;
   z-index: 100;
   margin: auto;
   align-items: center;
