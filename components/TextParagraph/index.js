@@ -7,7 +7,8 @@ const Paragraph = styled.p`
   color: #fff;
   font-family: "Herr Von Muellerhoff", cursive;
   text-align: center;
-  height: 50vh;
+  height: 45vh;
+  max-width: 100%;
   margin: 8vh 10vh 3vh 10vh;
   padding: 12vh 15vw;
   background: rgba(199, 87, 160, 0.05);
