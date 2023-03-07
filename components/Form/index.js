@@ -99,11 +99,11 @@ export default function Form() {
           ></StyledProgress>
         </StyledProgressBar>
         <StyledFormContainer>
-          <div className="header">
+          <div>
             <h1>{FormTitles[page]}</h1>
           </div>
-          <div className="body">{PageDisplay()}</div>
-          <StyledFooter className="footer">
+          <div>{PageDisplay()}</div>
+          <StyledFooter>
             <button
               disabled={page === 0}
               onClick={(event) => {
