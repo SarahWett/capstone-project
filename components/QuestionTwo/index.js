@@ -12,7 +12,7 @@ export default function Tags({ formData, setFormData }) {
         value={formData.family}
         type="checkbox"
         id="family"
-        name="family"
+        name="tags"
         checked={isChecked}
         onChange={checkHandler}
       />
@@ -21,7 +21,7 @@ export default function Tags({ formData, setFormData }) {
         value={formData.sports}
         type="checkbox"
         id="sports"
-        name="sports"
+        name="tags"
         onChange={(event) =>
           setFormData({ ...formData, sports: event.target.value })
         }
@@ -31,7 +31,7 @@ export default function Tags({ formData, setFormData }) {
         value={formData.walk}
         type="checkbox"
         id="walk"
-        name="walk"
+        name="tags"
         onChange={(event) =>
           setFormData({ ...formData, walk: event.target.value })
         }
@@ -42,7 +42,7 @@ export default function Tags({ formData, setFormData }) {
         value={formData.walk}
         type="checkbox"
         id="friends"
-        name="friends"
+        name="tags"
         onChange={(event) =>
           setFormData({ ...formData, friends: event.target.value })
         }
@@ -53,7 +53,7 @@ export default function Tags({ formData, setFormData }) {
         value={formData.walk}
         type="checkbox"
         id="work"
-        name="work"
+        name="tags"
         onChange={(event) =>
           setFormData({ ...formData, work: event.target.value })
         }
@@ -64,7 +64,7 @@ export default function Tags({ formData, setFormData }) {
         value={formData.walk}
         type="checkbox"
         id="partner"
-        name="partner"
+        name="tags"
         onChange={(event) =>
           setFormData({ ...formData, partner: event.target.value })
         }
@@ -75,7 +75,7 @@ export default function Tags({ formData, setFormData }) {
         value={formData.walk}
         type="checkbox"
         id="hobby"
-        name="hobby"
+        name="tags"
         onChange={(event) =>
           setFormData({ ...formData, hobby: event.target.value })
         }
