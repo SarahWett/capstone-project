@@ -21,10 +21,11 @@ export default function Smileys({ formData, setFormData }) {
       <label htmlFor="awesome">
         Awesome
         <input
-          value={formData.awesome}
+          value="awesome"
           type="radio"
           id="awesome"
           name="radio"
+          checked={formData.smiley === "awesome"}
           onClick={handleToggle}
           onChange={(event) =>
             setFormData({ ...formData, smiley: event.target.value })
@@ -34,10 +35,11 @@ export default function Smileys({ formData, setFormData }) {
       <label htmlFor="good">
         Good
         <input
-          value={formData.good}
+          value="good"
           type="radio"
           id="good"
           name="radio"
+          checked={formData.smiley === "good"}
           onClick={handleToggle}
           onChange={(event) =>
             setFormData({ ...formData, smiley: event.target.value })
@@ -47,10 +49,11 @@ export default function Smileys({ formData, setFormData }) {
       <label htmlFor="ok">
         Ok
         <input
-          value={formData.ok}
+          value="ok"
           type="radio"
           id="ok"
           name="radio"
+          checked={formData.smiley === "ok"}
           onClick={handleToggle}
           onChange={(event) =>
             setFormData({ ...formData, smiley: event.target.value })
@@ -60,10 +63,11 @@ export default function Smileys({ formData, setFormData }) {
       <label htmlFor="aweful">
         Aweful
         <input
-          value={formData.aweful}
+          value="aweful"
           type="radio"
           id="aweful"
           name="radio"
+          checked={formData.smiley === "aweful"}
           onClick={handleToggle}
           onChange={(event) =>
             setFormData({ ...formData, smiley: event.target.value })

@@ -7,22 +7,20 @@ const StyledCheckboxAreas = styled.div`
 `;
 
 export default function Tags() {
-  const [state, setState] = useState({
-    family: false,
-    sports: false,
-    walk: false,
-    friends: false,
-    work: false,
-    partner: false,
-    hobby: false,
+  const [state, setState] = useState(() => {
+    const savedState = JSON.parse(localStorage.getItem("tagsState"));
+    return (
+      savedState || {
+        family: false,
+        sports: false,
+        walk: false,
+        friends: false,
+        work: false,
+        partner: false,
+        hobby: false,
+      }
+    );
   });
-
-  useEffect(() => {
-    const savedState = localStorage.getItem("tagsState");
-    if (savedState) {
-      setState(JSON.parse(savedState));
-    }
-  }, []);
 
   useEffect(() => {
     localStorage.setItem("tagsState", JSON.stringify(state));
@@ -51,6 +49,7 @@ export default function Tags() {
           type="checkbox"
           id="sports"
           name="sports"
+          value="sports"
           checked={state.sports}
           onChange={handleInputChange}
         />
@@ -61,6 +60,7 @@ export default function Tags() {
           type="checkbox"
           id="walk"
           name="walk"
+          value="walk"
           checked={state.walk}
           onChange={handleInputChange}
         />
@@ -71,6 +71,7 @@ export default function Tags() {
           type="checkbox"
           id="friends"
           name="friends"
+          value="friends"
           checked={state.friends}
           onChange={handleInputChange}
         />
@@ -81,6 +82,7 @@ export default function Tags() {
           type="checkbox"
           id="work"
           name="work"
+          value="work"
           checked={state.work}
           onChange={handleInputChange}
         />{" "}
@@ -91,6 +93,7 @@ export default function Tags() {
           type="checkbox"
           id="partner"
           name="partner"
+          value="partner"
           checked={state.partner}
           onChange={handleInputChange}
         />
@@ -101,6 +104,7 @@ export default function Tags() {
           type="checkbox"
           id="hobby"
           name="hobby"
+          value="hobby"
           checked={state.hobby}
           onChange={handleInputChange}
         />
