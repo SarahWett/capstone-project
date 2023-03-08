@@ -100,7 +100,7 @@ export default function Form() {
     tags: [],
     message: "",
   });
-
+  console.log(formData);
   const FormTitles = [
     "How are you feeling today?",
     "What did you deal with?",
@@ -117,9 +117,24 @@ export default function Form() {
     }
   };
 
+  function handleButtonType(event) {
+    if (event.target.type === "submit") {
+      return "submit";
+    } else {
+      return "button";
+    }
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData);
+    onAddEntry(data);
+    event.target.reset();
+  }
   return (
     <>
-      <StyledForm>
+      <StyledForm onSubmit={handleSubmit}>
         <StyledProgressBar>
           <StyledProgress
             style={{

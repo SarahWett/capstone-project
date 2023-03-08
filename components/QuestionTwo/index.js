@@ -6,7 +6,7 @@ const StyledCheckboxAreas = styled.div`
   justify-content: space-between;
 `;
 
-export default function Tags() {
+export default function Tags({ setFormData }) {
   const [state, setState] = useState(() => {
     const savedState = JSON.parse(localStorage.getItem("tagsState"));
     return (
@@ -24,7 +24,8 @@ export default function Tags() {
 
   useEffect(() => {
     localStorage.setItem("tagsState", JSON.stringify(state));
-  }, [state]);
+    setFormData((prevFormData) => ({ ...prevFormData, tags: state }));
+  }, [state, setFormData]);
 
   const handleInputChange = (e) => {
     const { name, checked } = e.target;
