@@ -1,14 +1,12 @@
+import Form, { FormElement } from "@/components/Form";
 import { Heading } from "@/components/Header";
-import Navbar from "@/components/Navigation";
-import NavItems from "@/components/NavItems";
+import QuestionCard from "@/components/QuestionCard";
 
 export default function Survey() {
   return (
     <>
       <Heading>Survey</Heading>
-      <Navbar>
-        <NavItems />
-      </Navbar>
+      <Form />
     </>
   );
 }
