@@ -1,4 +1,10 @@
 import { useState, useEffect } from "react";
+import styled from "styled-components";
+
+const StyledCheckboxAreas = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
 
 export default function Tags() {
   const [state, setState] = useState({
@@ -29,62 +35,76 @@ export default function Tags() {
 
   return (
     <>
-      <label htmlFor="family">Family</label>
-      <input
-        type="checkbox"
-        id="family"
-        name="family"
-        checked={state.family}
-        onChange={handleInputChange}
-      />
-      <label htmlFor="sports">Sports</label>
-      <input
-        type="checkbox"
-        id="sports"
-        name="sports"
-        checked={state.sports}
-        onChange={handleInputChange}
-      />
-      <label htmlFor="walk">Walk</label>
-      <input
-        type="checkbox"
-        id="walk"
-        name="walk"
-        checked={state.walk}
-        onChange={handleInputChange}
-      />
-      <label htmlFor="friends">Friends</label>
-      <input
-        type="checkbox"
-        id="friends"
-        name="friends"
-        checked={state.friends}
-        onChange={handleInputChange}
-      />
-      <label htmlFor="work">Work</label>
-      <input
-        type="checkbox"
-        id="work"
-        name="work"
-        checked={state.work}
-        onChange={handleInputChange}
-      />
-      <label htmlFor="partner">Partner</label>
-      <input
-        type="checkbox"
-        id="partner"
-        name="partner"
-        checked={state.partner}
-        onChange={handleInputChange}
-      />
-      <label htmlFor="hobby">Hobby</label>
-      <input
-        type="checkbox"
-        id="hobby"
-        name="hobby"
-        checked={state.hobby}
-        onChange={handleInputChange}
-      />
+      <StyledCheckboxAreas>
+        <label htmlFor="family">Family</label>
+        <input
+          type="checkbox"
+          id="family"
+          name="family"
+          checked={state.family}
+          onChange={handleInputChange}
+        />
+      </StyledCheckboxAreas>
+      <StyledCheckboxAreas>
+        <label htmlFor="sports">Sports</label>
+        <input
+          type="checkbox"
+          id="sports"
+          name="sports"
+          checked={state.sports}
+          onChange={handleInputChange}
+        />
+      </StyledCheckboxAreas>
+      <StyledCheckboxAreas>
+        <label htmlFor="walk">Walk</label>
+        <input
+          type="checkbox"
+          id="walk"
+          name="walk"
+          checked={state.walk}
+          onChange={handleInputChange}
+        />
+      </StyledCheckboxAreas>
+      <StyledCheckboxAreas>
+        <label htmlFor="friends">Friends</label>
+        <input
+          type="checkbox"
+          id="friends"
+          name="friends"
+          checked={state.friends}
+          onChange={handleInputChange}
+        />
+      </StyledCheckboxAreas>
+      <StyledCheckboxAreas>
+        <label htmlFor="work">Work</label>
+        <input
+          type="checkbox"
+          id="work"
+          name="work"
+          checked={state.work}
+          onChange={handleInputChange}
+        />{" "}
+      </StyledCheckboxAreas>
+      <StyledCheckboxAreas>
+        <label htmlFor="partner">Partner</label>
+        <input
+          type="checkbox"
+          id="partner"
+          name="partner"
+          checked={state.partner}
+          onChange={handleInputChange}
+        />
+      </StyledCheckboxAreas>
+      <StyledCheckboxAreas>
+        <label htmlFor="hobby">Hobby</label>
+        <input
+          type="checkbox"
+          id="hobby"
+          name="hobby"
+          checked={state.hobby}
+          onChange={handleInputChange}
+        />
+      </StyledCheckboxAreas>
     </>
   );
 }

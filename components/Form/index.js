@@ -30,9 +30,11 @@ const StyledFormContainer = styled.div`
 `;
 
 const StyledHeader = styled.h1`
-  flex: 20%;
   display: grid;
   place-items: center;
+  padding: 1vh 5vh 1vh 5vh;
+  margin: 0;
+  color: #172e4f;
 `;
 
 const StyledProgressBar = styled.div`
@@ -46,6 +48,11 @@ const StyledProgress = styled.div`
   width: 33.3%;
   height: 100%;
   background-color: #b83d8d;
+`;
+
+const StyledPageDisplay = styled.div`
+  padding: 2vh 5vh 2vh 5vh;
+  line-height: 5vh;
 `;
 
 const CancelButton = styled.button`
@@ -122,9 +129,9 @@ export default function Form() {
         </StyledProgressBar>
         <StyledFormContainer>
           <div>
-            <h1>{FormTitles[page]}</h1>
+            <StyledHeader>{FormTitles[page]}</StyledHeader>
           </div>
-          <div>{PageDisplay()}</div>
+          <StyledPageDisplay>{PageDisplay()}</StyledPageDisplay>
           <StyledFooter>
             <StyledFooterButton
               type="button"

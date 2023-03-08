@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+
+const StyledInput = styled.input``;
 
 export default function Smileys({ formData, setFormData }) {
   const [isToggled, setIsToggled] = useState(false);
-  const handleToggle = () => {
+  const handleToggle = (e) => {
     setIsToggled(!isToggled);
+    localStorage.setItem("smileySelection", e.target.value);
   };
-  //   const [isId, setIsId] = useState(() => {
-  //     const saved = localStorage.getItem("isId");
-  //     const initialValue = JSON.parse(saved);
-  //     return initialValue || "";
-  //   });
-  //   useEffect(() => {
-  //     localStorage.setItem("id", JSON.stringify(id));
-  //   }, [isId]);
+  useEffect(() => {
+    const storedValue = localStorage.getItem("smileySelection");
+    if (storedValue) {
+      setFormData({ ...formData, smiley: storedValue });
+    }
+  }, []);
 
   return (
     <>

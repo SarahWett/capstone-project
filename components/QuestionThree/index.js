@@ -1,15 +1,17 @@
-import { useState } from "react";
+import styled from "styled-components";
+const StyledTextarea = styled.textarea`
+  width: 100%;
+`;
 
 const Message = ({ formData, setFormData }) => {
   return (
     <>
-      <label htmlFor="message">Is there something else you wanna add ?</label>
-      <textarea
+      <StyledTextarea
+        rows="10"
         value={formData.message}
         type="text"
         id="message"
         name="message"
-        rows="5"
         onChange={(event) =>
           setFormData({ ...formData, message: event.target.value })
         }
