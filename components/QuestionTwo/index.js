@@ -1,84 +1,89 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-export default function Tags({ formData, setFormData }) {
-  const [isChecked, setIsChecked] = useState(false);
-  const checkHandler = () => {
-    setIsChecked(!isChecked);
+export default function Tags() {
+  const [state, setState] = useState({
+    family: false,
+    sports: false,
+    walk: false,
+    friends: false,
+    work: false,
+    partner: false,
+    hobby: false,
+  });
+
+  useEffect(() => {
+    const savedState = localStorage.getItem("tagsState");
+    if (savedState) {
+      setState(JSON.parse(savedState));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("tagsState", JSON.stringify(state));
+  }, [state]);
+
+  const handleInputChange = (e) => {
+    const { name, checked } = e.target;
+    setState((prevState) => ({ ...prevState, [name]: checked }));
   };
+
   return (
     <>
       <label htmlFor="family">Family</label>
       <input
-        value={formData.family}
         type="checkbox"
         id="family"
-        name="tags"
-        checked={isChecked}
-        onChange={checkHandler}
+        name="family"
+        checked={state.family}
+        onChange={handleInputChange}
       />
       <label htmlFor="sports">Sports</label>
       <input
-        value={formData.sports}
         type="checkbox"
         id="sports"
-        name="tags"
-        onChange={(event) =>
-          setFormData({ ...formData, sports: event.target.value })
-        }
+        name="sports"
+        checked={state.sports}
+        onChange={handleInputChange}
       />
       <label htmlFor="walk">Walk</label>
       <input
-        value={formData.walk}
         type="checkbox"
         id="walk"
-        name="tags"
-        onChange={(event) =>
-          setFormData({ ...formData, walk: event.target.value })
-        }
+        name="walk"
+        checked={state.walk}
+        onChange={handleInputChange}
       />
-
       <label htmlFor="friends">Friends</label>
       <input
-        value={formData.walk}
         type="checkbox"
         id="friends"
-        name="tags"
-        onChange={(event) =>
-          setFormData({ ...formData, friends: event.target.value })
-        }
+        name="friends"
+        checked={state.friends}
+        onChange={handleInputChange}
       />
-
       <label htmlFor="work">Work</label>
       <input
-        value={formData.walk}
         type="checkbox"
         id="work"
-        name="tags"
-        onChange={(event) =>
-          setFormData({ ...formData, work: event.target.value })
-        }
+        name="work"
+        checked={state.work}
+        onChange={handleInputChange}
       />
-
       <label htmlFor="partner">Partner</label>
       <input
-        value={formData.walk}
         type="checkbox"
         id="partner"
-        name="tags"
-        onChange={(event) =>
-          setFormData({ ...formData, partner: event.target.value })
-        }
+        name="partner"
+        checked={state.partner}
+        onChange={handleInputChange}
       />
-
       <label htmlFor="hobby">Hobby</label>
       <input
-        value={formData.walk}
         type="checkbox"
         id="hobby"
-        name="tags"
-        onChange={(event) =>
-          setFormData({ ...formData, hobby: event.target.value })
-        }
+        name="hobby"
+        checked={state.hobby}
+        onChange={handleInputChange}
       />
     </>
   );

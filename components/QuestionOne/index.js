@@ -1,10 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function Smileys({ formData, setFormData }) {
   const [isToggled, setIsToggled] = useState(false);
   const handleToggle = () => {
     setIsToggled(!isToggled);
   };
+  //   const [isId, setIsId] = useState(() => {
+  //     const saved = localStorage.getItem("isId");
+  //     const initialValue = JSON.parse(saved);
+  //     return initialValue || "";
+  //   });
+  //   useEffect(() => {
+  //     localStorage.setItem("id", JSON.stringify(id));
+  //   }, [isId]);
 
   return (
     <>
