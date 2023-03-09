@@ -5,6 +5,9 @@ import Tags from "../QuestionTwo";
 import Message from "../QuestionThree";
 import Navbar from "../Navigation";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import FormButton from "../ForrmButton";
+import FooterButton from "../ForrmButton";
 
 const StyledForm = styled.form`
   width: 100%;
@@ -74,23 +77,20 @@ const StyledFooter = styled.div`
   align-self: center;
 `;
 
-const StyledFooterButton = styled.button`
-  width: 100px;
-  height: 40px;
-  background-color: #355f97;
-  font-weight: bold;
-  color: white;
-  border: 0.5px solid white;
-  border-radius: 15px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
-    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-  padding: 10px 5px;
-  margin: 10px 5px;
-  margin: 5px;
-  &:disabled {
-    background-color: #d7d4ed;
-  }
+const StyledSavedText = styled.h1`
+  padding: 15vh;
+  margin: 0;
+  color: #172e4f;
+  width: 360px;
+  height: 400px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+  display: flex;
+  background: rgba(199, 87, 160, 0.05);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(199, 87, 160, 0.59);
 `;
 
 export default function Form() {
@@ -101,6 +101,11 @@ export default function Form() {
     message: "",
   });
   console.log(formData);
+
+  const [showSavedPage, setShowSavedPage] = useState(false);
+
+  const [showSubmitButton, setShowSubmitButton] = useState(false);
+
   const FormTitles = [
     "How are you feeling today?",
     "What did you deal with?",
@@ -117,66 +122,87 @@ export default function Form() {
     }
   };
 
-  function handleButtonType(event) {
-    if (event.target.type === "submit") {
-      return "submit";
-    } else {
-      return "button";
-    }
-  }
+  const router = useRouter();
 
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    onAddEntry(data);
+    // onAddEntry(data);
     event.target.reset();
+
+    setShowSavedPage(true);
+
+    setTimeout(() => {
+      setShowSavedPage(false);
+      setFormData({
+        smiley: "",
+        tags: [],
+        message: "",
+      });
+      router.push("/");
+    }, 2000);
   }
+
   return (
     <>
-      <StyledForm onSubmit={handleSubmit}>
-        <StyledProgressBar>
-          <StyledProgress
-            style={{
-              width: page === 0 ? "33.3%" : page === 1 ? "66.6%" : "100%",
-            }}
-          ></StyledProgress>
-        </StyledProgressBar>
-        <StyledFormContainer>
+      {showSavedPage ? (
+        <>
           <div>
-            <StyledHeader>{FormTitles[page]}</StyledHeader>
+            <StyledSavedText>Saved!</StyledSavedText>
           </div>
-          <StyledPageDisplay>{PageDisplay()}</StyledPageDisplay>
-          <StyledFooter>
-            <StyledFooterButton
-              type="button"
-              disabled={page === 0}
-              onClick={() => {
-                setPage((currentPage) => currentPage - 1);
-              }}
-            >
-              Prev
-            </StyledFooterButton>
-            <StyledFooterButton
-              type="button"
-              onClick={() => {
-                if (page === FormTitles.length - 1) {
-                  alert("FORM SUBMITTED!");
-                } else {
-                  setPage((currentPage) => currentPage + 1);
-                }
-              }}
-            >
-              {page === FormTitles.length - 1 ? "Submit" : "Next"}
-            </StyledFooterButton>
-          </StyledFooter>
-        </StyledFormContainer>
-      </StyledForm>
-      <Navbar>
-        <Link href="/">
-          <CancelButton>CANCEL</CancelButton>
-        </Link>
-      </Navbar>
+          <Navbar />
+        </>
+      ) : (
+        <>
+          <StyledForm onSubmit={handleSubmit}>
+            <StyledProgressBar>
+              <StyledProgress
+                style={{
+                  width: page === 0 ? "33.3%" : page === 1 ? "66.6%" : "100%",
+                }}
+              ></StyledProgress>
+            </StyledProgressBar>
+            <StyledFormContainer>
+              <div>
+                <StyledHeader>{FormTitles[page]}</StyledHeader>
+              </div>
+              <StyledPageDisplay>{PageDisplay()}</StyledPageDisplay>
+              <StyledFooter>
+                <FormButton
+                  type="button"
+                  disabled={page === 0}
+                  onClick={() => {
+                    setPage((currentPage) => currentPage - 1);
+                    setShowSubmitButton(false);
+                  }}
+                >
+                  Prev
+                </FormButton>
+                {page === FormTitles.length - 1 ? (
+                  <FormButton type="submit">Confirm</FormButton>
+                ) : (
+                  <FormButton
+                    type="button"
+                    disabled={page === FormTitles.length - 1}
+                    onClick={() => {
+                      setPage((currentPage) => currentPage + 1);
+                      //   setShowSubmitButton(page === FormTitles.length - 2);
+                    }}
+                  >
+                    Next
+                  </FormButton>
+                )}
+              </StyledFooter>
+            </StyledFormContainer>
+          </StyledForm>
+          <Navbar>
+            <Link href="/">
+              <CancelButton type="button">CANCEL</CancelButton>
+            </Link>
+          </Navbar>
+        </>
+      )}
     </>
   );
 }

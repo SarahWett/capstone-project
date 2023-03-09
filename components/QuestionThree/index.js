@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 const StyledTextarea = styled.textarea`
   width: 100%;
 `;
