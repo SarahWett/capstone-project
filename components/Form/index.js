@@ -104,8 +104,6 @@ export default function Form() {
 
   const [showSavedPage, setShowSavedPage] = useState(false);
 
-  const [showSubmitButton, setShowSubmitButton] = useState(false);
-
   const FormTitles = [
     "How are you feeling today?",
     "What did you deal with?",
@@ -125,11 +123,12 @@ export default function Form() {
   const router = useRouter();
 
   function handleSubmit(event) {
+    event.target.reset();
     event.preventDefault();
+
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
     // onAddEntry(data);
-    event.target.reset();
 
     setShowSavedPage(true);
 
@@ -140,6 +139,7 @@ export default function Form() {
         tags: [],
         message: "",
       });
+
       router.push("/");
     }, 2000);
   }
@@ -174,25 +174,26 @@ export default function Form() {
                   disabled={page === 0}
                   onClick={() => {
                     setPage((currentPage) => currentPage - 1);
-                    setShowSubmitButton(false);
                   }}
                 >
                   Prev
                 </FormButton>
-                {page === FormTitles.length - 1 ? (
-                  <FormButton type="submit">Confirm</FormButton>
-                ) : (
-                  <FormButton
-                    type="button"
-                    disabled={page === FormTitles.length - 1}
-                    onClick={() => {
-                      setPage((currentPage) => currentPage + 1);
-                      //   setShowSubmitButton(page === FormTitles.length - 2);
-                    }}
-                  >
-                    Next
-                  </FormButton>
-                )}
+                <FormButton
+                  type="submit"
+                  disabled={page !== FormTitles.length - 1}
+                >
+                  Confirm
+                </FormButton>
+
+                <FormButton
+                  type="button"
+                  disabled={page === FormTitles.length - 1}
+                  onClick={() => {
+                    setPage((currentPage) => currentPage + 1);
+                  }}
+                >
+                  Next
+                </FormButton>
               </StyledFooter>
             </StyledFormContainer>
           </StyledForm>
