@@ -7,7 +7,6 @@ import Navbar from "../Navigation";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import FormButton from "../ForrmButton";
-import FooterButton from "../ForrmButton";
 
 const StyledForm = styled.form`
   width: 100%;
@@ -93,8 +92,9 @@ const StyledSavedText = styled.h1`
   border: 1px solid rgba(199, 87, 160, 0.59);
 `;
 
-export default function Form() {
+export default function Form({}) {
   const [page, setPage] = useState(0);
+  //Keeping track of user input:
   const [formData, setFormData] = useState({
     smiley: "",
     tags: [],
@@ -109,12 +109,55 @@ export default function Form() {
     "What did you deal with?",
     "What would you like to say?",
   ];
+  //State to reset radio input after submit:
+  const [checkedRadioSmiley, setCheckedRadioSmiley] = useState({
+    isChecked: "",
+  });
+
+  const [checkedCheckbox, setCheckedCheckbox] = useState({
+    isChecked: [],
+  });
 
   const PageDisplay = () => {
     if (page === 0) {
-      return <Smileys formData={formData} setFormData={setFormData} />;
+      return (
+        <Smileys
+          formData={formData}
+          setFormData={setFormData}
+          name="radio"
+          checkedRadio={checkedRadioSmiley}
+          setCheckedRadio={setCheckedRadioSmiley}
+          required={true}
+          listOfOptions={[
+            { smileyName: "awesome" },
+            { smileyName: "good" },
+            { smileyName: "okay" },
+            { smileyName: "aweful" },
+          ]}
+        />
+      );
     } else if (page === 1) {
-      return <Tags formData={formData} setFormData={setFormData} />;
+      return (
+        <Tags
+          formData={formData}
+          setFormData={setFormData}
+          name="checkbox"
+          checkedCheckbox={checkedCheckbox}
+          setCheckedCheckbox={setCheckedCheckbox}
+          required={true}
+          listOfOptions={[
+            { tagName: "Family" },
+            { tagName: "Friends" },
+            { tagName: "Partner" },
+            { tagName: "Work" },
+            { tagName: "Hobby" },
+            { tagName: "Household" },
+            { tagName: "TV" },
+            { tagName: "Sports" },
+            { tagName: "Walk" },
+          ]}
+        />
+      );
     } else {
       return <Message formData={formData} setFormData={setFormData} />;
     }
@@ -123,7 +166,6 @@ export default function Form() {
   const router = useRouter();
 
   function handleSubmit(event) {
-    event.target.reset();
     event.preventDefault();
 
     const formData = new FormData(event.target);
@@ -142,6 +184,8 @@ export default function Form() {
 
       router.push("/");
     }, 2000);
+
+    setCheckedRadioSmiley({ isChecked: "" });
   }
 
   return (
@@ -187,7 +231,12 @@ export default function Form() {
 
                 <FormButton
                   type="button"
-                  disabled={page === FormTitles.length - 1}
+                  disabled={
+                    page === FormTitles.length - 1
+                    // ||
+                    // (page === 1 && !isValid) ||
+                    // (page === 0 && !isAtLeastOneChecked)
+                  }
                   onClick={() => {
                     setPage((currentPage) => currentPage + 1);
                   }}

@@ -6,40 +6,75 @@ const StyledCheckboxAreas = styled.div`
   justify-content: space-between;
 `;
 
-export default function Tags({ setFormData }) {
+export default function Tags({
+  formData,
+  setFormData,
+  name,
+  listOfOptions,
+  checkedCheckbox,
+  setCheckedCheckbox,
+  required,
+}) {
   const [state, setState] = useState(() => {
     const savedState = JSON.parse(localStorage.getItem("tagsState"));
     return (
       savedState || {
         family: false,
+        friends: false,
+        partner: false,
+        work: false,
+        hobby: false,
+        household: false,
+        tv: false,
         sports: false,
         walk: false,
-        friends: false,
-        work: false,
-        partner: false,
-        hobby: false,
       }
     );
   });
 
+  const [isValid, setIsValid] = useState(true);
+
   useEffect(() => {
     localStorage.setItem("tagsState", JSON.stringify(state));
     setFormData((prevFormData) => ({ ...prevFormData, tags: state }));
+    setIsValid(Object.values(state).some((val) => val));
   }, [state, setFormData]);
 
   const handleInputChange = (e) => {
     const { name, checked } = e.target;
     setState((prevState) => ({ ...prevState, [name]: checked }));
+    //Checking if at least one checknbox is checked
+    setIsValid(Object.values({ ...state, [name]: checked }).some((val) => val));
   };
 
+  //   const { isChecked } = checkedCheckbox;
   return (
     <>
+      {listOfOptions.map((tags, index) => {
+        const { tagName } = tags;
+        return (
+          <label htmlFor="family" key={index}>
+            {tagName}
+            <input
+              type="checkbox"
+              id={tagName}
+              name={name}
+              value={tagName}
+              //   checked={isChecked === tagName}
+              onChange={handleInputChange}
+            />
+          </label>
+        );
+      })}
+
+      {/* {formData.tags === [] && <p>Please select at least one checkbox.</p>}
       <StyledCheckboxAreas>
         <label htmlFor="family">Family</label>
         <input
           type="checkbox"
           id="family"
           name="family"
+          value="family"
           checked={state.family}
           onChange={handleInputChange}
         />
@@ -109,7 +144,7 @@ export default function Tags({ setFormData }) {
           checked={state.hobby}
           onChange={handleInputChange}
         />
-      </StyledCheckboxAreas>
+      </StyledCheckboxAreas> */}
     </>
   );
 }

@@ -1,80 +1,64 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import FormButton from "../ForrmButton";
 
 const StyledInput = styled.input``;
 
-export default function Smileys({ formData, setFormData }) {
+export default function Smileys({
+  formData,
+  setFormData,
+  name,
+  listOfOptions,
+  checkedRadio,
+  setCheckedRadio,
+  required,
+}) {
+  //Updates local Storage whenever radio button is clicked -saves smiley selection when user navigates back to page
+
   const [isToggled, setIsToggled] = useState(false);
+
   const handleToggle = (e) => {
     setIsToggled(!isToggled);
     localStorage.setItem("smileySelection", e.target.value);
   };
+
   useEffect(() => {
     const storedValue = localStorage.getItem("smileySelection");
+    //update formData with stored value
     if (storedValue) {
       setFormData({ ...formData, smiley: storedValue });
     }
   }, []);
 
+  const handleInputChange = (e) => {
+    setFormData({ ...formData, smiley: e.target.value });
+    setIsToggled(true);
+  };
+
+  const { isChecked } = checkedRadio;
   return (
     <>
-      <label htmlFor="awesome">
-        Awesome
-        <input
-          value="awesome"
-          type="radio"
-          id="awesome"
-          name="radio"
-          checked={formData.smiley === "awesome"}
-          onClick={handleToggle}
-          onChange={(event) =>
-            setFormData({ ...formData, smiley: event.target.value })
-          }
-        />
-      </label>
-      <label htmlFor="good">
-        Good
-        <input
-          value="good"
-          type="radio"
-          id="good"
-          name="radio"
-          checked={formData.smiley === "good"}
-          onClick={handleToggle}
-          onChange={(event) =>
-            setFormData({ ...formData, smiley: event.target.value })
-          }
-        />
-      </label>
-      <label htmlFor="ok">
-        Ok
-        <input
-          value="ok"
-          type="radio"
-          id="ok"
-          name="radio"
-          checked={formData.smiley === "ok"}
-          onClick={handleToggle}
-          onChange={(event) =>
-            setFormData({ ...formData, smiley: event.target.value })
-          }
-        />
-      </label>
-      <label htmlFor="aweful">
-        Aweful
-        <input
-          value="aweful"
-          type="radio"
-          id="aweful"
-          name="radio"
-          checked={formData.smiley === "aweful"}
-          onClick={handleToggle}
-          onChange={(event) =>
-            setFormData({ ...formData, smiley: event.target.value })
-          }
-        />
-      </label>
+      {listOfOptions.map((smiley, index) => {
+        const { smileyName } = smiley;
+        return (
+          <label key={index} htmlFor={smileyName}>
+            {smileyName}
+            <input
+              checked={isChecked === smileyName}
+              onClick={() => {
+                setCheckedRadio({ isChecked: smileyName });
+                setIsToggled(true);
+                localStorage.setItem("smileySelection", smileyName);
+              }}
+              type="radio"
+              id={smileyName}
+              name={name}
+              value={smileyName}
+              required={required}
+              onChange={handleInputChange}
+            />
+          </label>
+        );
+      })}
     </>
   );
 }
