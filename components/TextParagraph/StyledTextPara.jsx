@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Paragraph = styled.p`
+export const Paragraph = styled.p`
   display: flex;
   position: relative;
   font-size: 4vh;
@@ -17,7 +17,3 @@ const Paragraph = styled.p`
   backdrop-filter: blur(5px);
   border: 1px solid rgba(199, 87, 160, 0.59);
 `;
-
-export default function TextParagraph({ children }) {
-  return <Paragraph>{children}</Paragraph>;
-}

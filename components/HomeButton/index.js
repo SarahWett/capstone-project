@@ -1,11 +1,5 @@
 import Link from "next/link";
-import styled from "styled-components";
-
-const Button = styled.button`
-  background: #f2f2f2;
-  border: 1px solid #fff;
-  border-radius: 20%;
-`;
+import { Button } from "./StyledHomeButton";
 
 export default function HomeButton() {
   return (
