@@ -17,80 +17,40 @@ import {
   StyledProgressBar,
   CancelButton,
 } from "./StyledForm";
+import useLocalStorageState from "use-local-storage-state";
 
 export default function Form({}) {
   const [page, setPage] = useState(0);
-  //Keeping track of user input:
-  const [formData, setFormData] = useState({
-    smiley: "",
-    tags: [],
-    message: "",
+
+  const [formData, setFormData] = useLocalStorageState("formData", {
+    defaultValue: {
+      smiley: "",
+      tags: {
+        family: false,
+        friends: false,
+        partner: false,
+        work: false,
+        hobby: false,
+        household: false,
+        tv: false,
+        sports: false,
+        walk: false,
+      },
+
+      message: "",
+    },
   });
+
   console.log(formData);
 
-  const [smileySelection, setSmileySelection] = useState("");
-  const [tagSelection, setTagSelection] = useState([]);
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    const storedSmiley = localStorage.getItem("smileySelection");
-    if (storedSmiley) {
-      setSmileySelection(storedSmiley);
-    }
-
-    const storedTag = localStorage.getItem("tagSelection");
-    if (storedTag) {
-      setTagSelection(storedTag.split(","));
-    }
-
     const storedMessage = localStorage.getItem("message");
     if (storedMessage) {
       setMessage(storedMessage);
     }
   }, []);
-
-  const handleSmileySelection = (value) => {
-    setSmileySelection(value);
-    setFormData({ ...formData, smiley: value });
-    localStorage.setItem("smileySelection", value);
-  };
-
-  //   const handleTagSelection = (value, isChecked) => {
-  //     if (isChecked) {
-  //       setTagSelection([...tagSelection, value]);
-  //       setFormData({ ...formData, tags: [...formData.tags, value] });
-  //       localStorage.setItem(
-  //         "tagSelection",
-  //         JSON.stringify([...tagSelection, value])
-  //       );
-  //     } else {
-  //       const newTagSelection = tagSelection.filter((tag) => tag !== value);
-  //       setTagSelection(newTagSelection);
-  //       setFormData({ ...formData, tags: newTagSelection });
-  //       localStorage.setItem("tagSelection", JSON.   stringify(newTagSelection));
-  //     }
-  //   };
-  const handleTagSelection = (value, isChecked) => {
-    if (isChecked) {
-      setTagSelection([...tagSelection, value]);
-      setFormData((prevFormData) => ({
-        ...prevFormData,
-        tags: [...prevFormData.tags, value],
-      }));
-      localStorage.setItem(
-        "tagSelection",
-        JSON.stringify([...tagSelection, value])
-      );
-    } else {
-      const newTagSelection = tagSelection.filter((tag) => tag !== value);
-      setTagSelection(newTagSelection);
-      setFormData((prevFormData) => ({
-        ...prevFormData,
-        tags: newTagSelection,
-      }));
-      localStorage.setItem("tagSelection", JSON.stringify(newTagSelection));
-    }
-  };
 
   const handelMessage = (value) => {
     setMessage(value);
@@ -103,12 +63,8 @@ export default function Form({}) {
   const FormTitles = [
     "How are you feeling today?",
     "What did you deal with?",
-    "What would you like to say?",
+    "Please write what first comes into your mind thinking of today:",
   ];
-  //   State to reset radio input after submit:
-  //   const [checkedRadioSmiley, setCheckedRadioSmiley] = useState({
-  //     isChecked: "",
-  //   });
 
   const [checkedCheckbox, setCheckedCheckbox] = useState({
     isChecked: [],
@@ -120,12 +76,6 @@ export default function Form({}) {
         <Smileys
           formData={formData}
           setFormData={setFormData}
-          name="radio"
-          smileySelection={smileySelection}
-          setSmileySelection={handleSmileySelection}
-          //   checkedRadio={checkedRadioSmiley}
-          //   setCheckedRadio={setCheckedRadioSmiley}
-          required={true}
           listOfOptions={[
             { smileyName: "awesome" },
             { smileyName: "good" },
@@ -139,11 +89,6 @@ export default function Form({}) {
         <Tags
           formData={formData}
           setFormData={setFormData}
-          tagSelection={tagSelection}
-          setTagSelection={handleTagSelection}
-          checkedCheckbox={checkedCheckbox}
-          setCheckedCheckbox={setCheckedCheckbox}
-          required={true}
           listOfOptions={[
             { tagName: "Family" },
             { tagName: "Friends" },
@@ -231,7 +176,7 @@ export default function Form({}) {
                 <FormButton
                   type="button"
                   disabled={
-                    page === FormTitles.length - 1
+                    page === FormTitles.length - 1 || formData.smiley < 1
                     // ||
                     // (page === 1 && !isValid) ||
                     // (page === 0 && !isAtLeastOneChecked)

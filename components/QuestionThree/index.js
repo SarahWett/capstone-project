@@ -5,18 +5,19 @@ const StyledTextarea = styled.textarea`
 `;
 
 const Message = ({ formData, setFormData }) => {
+  function handleOnChange(event) {
+    setFormData({ ...formData, message: event.target.value });
+  }
   return (
     <>
       <StyledTextarea
-        rows="10"
+        rows="8"
         value={formData.message}
         type="text"
         id="message"
         name="message"
         required
-        onChange={(event) =>
-          setFormData({ ...formData, message: event.target.value })
-        }
+        onChange={handleOnChange}
       />
     </>
   );

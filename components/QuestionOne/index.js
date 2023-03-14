@@ -1,44 +1,15 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+export default function Smileys({ formData, setFormData, listOfOptions }) {
+  // const [isSmileySelected, setIsSmileySelected] = useState(false);
 
-export default function Smileys({
-  formData,
-  setFormData,
-  name,
-  listOfOptions,
-  checkedRadio,
-  setCheckedRadio,
-  required,
-  handleSmileySelection,
-  smileySelection,
-  setSmileySelection,
-}) {
-  //Updates local Storage whenever radio button is clicked -saves smiley selection when user navigates back to page
+  function handleOnChange(event) {
+    setFormData({ ...formData, smiley: event.target.value });
+    // setIsSmileySelected(true);
+  }
 
-  const [isToggled, setIsToggled] = useState(false);
+  // function handleNext() {
+  //   onNext();
+  // }
 
-  const handleToggle = (e) => {
-    setIsToggled(!isToggled);
-    localStorage.setItem("smileySelection", e.target.value);
-  };
-
-  useEffect(() => {
-    const storedValue = localStorage.getItem("smileySelection");
-    //update formData with stored value
-    if (storedValue) {
-      setFormData({ ...formData, smiley: storedValue });
-    }
-  }, []);
-
-  const handleSmileyInputChange = (e) => {
-    setFormData({ ...formData, smiley: e.target.value });
-    setSmileySelection(e.target.value);
-    localStorage.setItem("smileySelection", e.target.value);
-
-    setIsToggled(true);
-    // setCheckedRadio({ isChecked: e.target.value });
-  };
-  //   const { isChecked } = checkedRadio;
   return (
     <>
       {listOfOptions.map((smiley, index) => {
@@ -48,20 +19,12 @@ export default function Smileys({
             {smileyName}
             <input
               checked={formData.smiley === smileyName}
-              onClick={() => {
-                //   setCheckedRadio({ isChecked: smileyName });
-                setIsToggled(true);
-                setSmileySelection(smileyName);
-                localStorage.setItem("smileySelection", smileyName);
-                //   localStorage.setItem("smileySelection", smileyName);
-              }}
               type="radio"
               id={smileyName}
-              name={name}
+              name="radio"
               value={smileyName}
-              required={required}
-              onChange={handleSmileyInputChange}
-              onClick={handleSmileySelection}
+              required={true}
+              onChange={handleOnChange}
             />
           </label>
         );
