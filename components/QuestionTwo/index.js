@@ -13,20 +13,20 @@ export default function Tags({
 }) {
   //initialize object with keys set default to false / reads state from localStorage if existing
   const [state, setState] = useState(() => {
-    const savedState = JSON.parse(localStorage.getItem("tagsSelection"));
-    return (
-      savedState || {
-        family: false,
-        friends: false,
-        partner: false,
-        work: false,
-        hobby: false,
-        household: false,
-        tv: false,
-        sports: false,
-        walk: false,
-      }
-    );
+    const savedState = localStorage.getItem("tagsSelection");
+    return savedState
+      ? JSON.parse(savedState)
+      : {
+          family: false,
+          friends: false,
+          partner: false,
+          work: false,
+          hobby: false,
+          household: false,
+          tv: false,
+          sports: false,
+          walk: false,
+        };
   });
   //Ensuring that at least one option is selected
   // const [isValid, setIsValid] = useState(true);
@@ -47,18 +47,16 @@ export default function Tags({
   //Checking if at least one checknbox is checked
   // const isValid = Object.values(checkedCheckbox.isChecked).some((val) => val);
   // }
+
   const handleTagInputChange = (e) => {
     const { name, checked } = e.target;
     setState((prevState) => ({ ...prevState, [name]: checked }));
-    const selectedTags = Object.entries(state)
-      .filter(([key, value]) => value)
-      .map(([key, value]) => key);
     setFormData((prevFormData) => ({
       ...prevFormData,
-      tags: selectedTags,
+      tags: Object.entries({ ...state, [name]: checked })
+        .filter(([key, value]) => value)
+        .map(([key, value]) => key),
     }));
-    setTagSelection(selectedTags);
-    localStorage.setItem("tagSelection", JSON.stringify(selectedTags));
     console.log("new Tags selected");
   };
 
