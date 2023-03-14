@@ -43,21 +43,6 @@ export default function Form({}) {
 
   console.log(formData);
 
-  const [message, setMessage] = useState("");
-
-  useEffect(() => {
-    const storedMessage = localStorage.getItem("message");
-    if (storedMessage) {
-      setMessage(storedMessage);
-    }
-  }, []);
-
-  const handelMessage = (value) => {
-    setMessage(value);
-    setFormData({ ...formData, message: value });
-    localStorage.setItem("message", value);
-  };
-
   const [showSavedPage, setShowSavedPage] = useState(false);
 
   const FormTitles = [
@@ -115,7 +100,7 @@ export default function Form({}) {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
     // onAddEntry(data);
-    console.log(data);
+
     setShowSavedPage(true);
 
     setTimeout(() => {
