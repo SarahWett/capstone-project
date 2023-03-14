@@ -115,7 +115,7 @@ export default function Form({}) {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
     // onAddEntry(data);
-
+    console.log(data);
     setShowSavedPage(true);
 
     setTimeout(() => {
@@ -177,9 +177,6 @@ export default function Form({}) {
                   type="button"
                   disabled={
                     page === FormTitles.length - 1 || formData.smiley < 1
-                    // ||
-                    // (page === 1 && !isValid) ||
-                    // (page === 0 && !isAtLeastOneChecked)
                   }
                   onClick={() => {
                     setPage((currentPage) => currentPage + 1);

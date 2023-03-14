@@ -5,7 +5,7 @@ export default function Tags({ formData, setFormData, listOfOptions }) {
     newTagsObject[keyToUpdate] = !newTagsObject[keyToUpdate];
     setFormData({ ...formData, tags: newTagsObject });
   }
-
+  console.log(formData);
   return (
     <>
       {listOfOptions.map(({ tagName }) => {
