@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import { useState, useEffect } from "react";
 import Smileys from "../QuestionOne";
 import Tags from "../QuestionTwo";
@@ -7,90 +6,17 @@ import Navbar from "../Navigation";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import FormButton from "../ForrmButton";
-
-const StyledForm = styled.form`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-const StyledFormContainer = styled.div`
-  width: 360px;
-  height: 400px;
-  border-radius: 8px;
-  box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
-  display: flex;
-  flex-direction: column;
-  background: rgba(199, 87, 160, 0.05);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(5px);
-  border: 1px solid rgba(199, 87, 160, 0.59);
-`;
-
-const StyledHeader = styled.h1`
-  display: grid;
-  place-items: center;
-  padding: 1vh 5vh 1vh 5vh;
-  margin: 0;
-  color: #172e4f;
-`;
-
-const StyledProgressBar = styled.div`
-  width: 375px;
-  height: 10px;
-  background-color: white;
-  margin-bottom: 50px;
-`;
-
-const StyledProgress = styled.div`
-  width: 33.3%;
-  height: 100%;
-  background-color: #b83d8d;
-`;
-
-const StyledPageDisplay = styled.div`
-  padding: 2vh 5vh 2vh 5vh;
-  line-height: 5vh;
-`;
-
-const CancelButton = styled.button`
-  width: 100px;
-  height: 5vh;
-  background-color: #b83d8d;
-  color: white;
-  border-radius: 10px;
-  border: 0.5px solid white;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
-    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-`;
-
-const StyledFooter = styled.div`
-  display: flex;
-  position: fixed;
-  bottom: 0%;
-  align-self: center;
-`;
-
-const StyledSavedText = styled.h1`
-  padding: 15vh;
-  margin: 0;
-  color: #172e4f;
-  width: 360px;
-  height: 400px;
-  border-radius: 8px;
-  box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
-  display: flex;
-  background: rgba(199, 87, 160, 0.05);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(5px);
-  border: 1px solid rgba(199, 87, 160, 0.59);
-`;
+import {
+  StyledForm,
+  StyledFooter,
+  StyledFormContainer,
+  StyledHeader,
+  StyledSavedText,
+  StyledPageDisplay,
+  StyledProgress,
+  StyledProgressBar,
+  CancelButton,
+} from "./StyledForm";
 
 export default function Form({}) {
   const [page, setPage] = useState(0);
@@ -102,6 +28,76 @@ export default function Form({}) {
   });
   console.log(formData);
 
+  const [smileySelection, setSmileySelection] = useState("");
+  const [tagSelection, setTagSelection] = useState([]);
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    const storedSmiley = localStorage.getItem("smileySelection");
+    if (storedSmiley) {
+      setSmileySelection(storedSmiley);
+    }
+
+    const storedTag = localStorage.getItem("tagSelection");
+    if (storedTag) {
+      setTagSelection(storedTag.split(","));
+    }
+
+    const storedMessage = localStorage.getItem("message");
+    if (storedMessage) {
+      setMessage(storedMessage);
+    }
+  }, []);
+
+  const handleSmileySelection = (value) => {
+    setSmileySelection(value);
+    setFormData({ ...formData, smiley: value });
+    localStorage.setItem("smileySelection", value);
+  };
+
+  //   const handleTagSelection = (value, isChecked) => {
+  //     if (isChecked) {
+  //       setTagSelection([...tagSelection, value]);
+  //       setFormData({ ...formData, tags: [...formData.tags, value] });
+  //       localStorage.setItem(
+  //         "tagSelection",
+  //         JSON.stringify([...tagSelection, value])
+  //       );
+  //     } else {
+  //       const newTagSelection = tagSelection.filter((tag) => tag !== value);
+  //       setTagSelection(newTagSelection);
+  //       setFormData({ ...formData, tags: newTagSelection });
+  //       localStorage.setItem("tagSelection", JSON.   stringify(newTagSelection));
+  //     }
+  //   };
+  const handleTagSelection = (value, isChecked) => {
+    if (isChecked) {
+      setTagSelection([...tagSelection, value]);
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        tags: [...prevFormData.tags, value],
+      }));
+      localStorage.setItem(
+        "tagSelection",
+        JSON.stringify([...tagSelection, value])
+      );
+    } else {
+      const newTagSelection = tagSelection.filter((tag) => tag !== value);
+      setTagSelection(newTagSelection);
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        tags: newTagSelection,
+      }));
+      localStorage.setItem("tagSelection", JSON.stringify(newTagSelection));
+    }
+  };
+
+  const handelMessage = (value) => {
+    setMessage(value);
+    setFormData({ ...formData, message: value });
+    localStorage.setItem("message", value);
+  };
+
   const [showSavedPage, setShowSavedPage] = useState(false);
 
   const FormTitles = [
@@ -109,10 +105,10 @@ export default function Form({}) {
     "What did you deal with?",
     "What would you like to say?",
   ];
-  //State to reset radio input after submit:
-  const [checkedRadioSmiley, setCheckedRadioSmiley] = useState({
-    isChecked: "",
-  });
+  //   State to reset radio input after submit:
+  //   const [checkedRadioSmiley, setCheckedRadioSmiley] = useState({
+  //     isChecked: "",
+  //   });
 
   const [checkedCheckbox, setCheckedCheckbox] = useState({
     isChecked: [],
@@ -125,8 +121,10 @@ export default function Form({}) {
           formData={formData}
           setFormData={setFormData}
           name="radio"
-          checkedRadio={checkedRadioSmiley}
-          setCheckedRadio={setCheckedRadioSmiley}
+          smileySelection={smileySelection}
+          setSmileySelection={handleSmileySelection}
+          //   checkedRadio={checkedRadioSmiley}
+          //   setCheckedRadio={setCheckedRadioSmiley}
           required={true}
           listOfOptions={[
             { smileyName: "awesome" },
@@ -141,7 +139,8 @@ export default function Form({}) {
         <Tags
           formData={formData}
           setFormData={setFormData}
-          name="checkbox"
+          tagSelection={tagSelection}
+          setTagSelection={handleTagSelection}
           checkedCheckbox={checkedCheckbox}
           setCheckedCheckbox={setCheckedCheckbox}
           required={true}
@@ -185,9 +184,9 @@ export default function Form({}) {
       router.push("/");
     }, 2000);
 
-    setCheckedRadioSmiley({ isChecked: "" });
+    // setCheckedRadioSmiley({ isChecked: "" });
+    setCheckedCheckbox({ isChecked: [] });
   }
-
   return (
     <>
       {showSavedPage ? (

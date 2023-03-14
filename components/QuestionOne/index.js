@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
-const StyledInput = styled.input``;
-
 export default function Smileys({
   formData,
   setFormData,
@@ -11,6 +9,9 @@ export default function Smileys({
   checkedRadio,
   setCheckedRadio,
   required,
+  handleSmileySelection,
+  smileySelection,
+  setSmileySelection,
 }) {
   //Updates local Storage whenever radio button is clicked -saves smiley selection when user navigates back to page
 
@@ -29,12 +30,15 @@ export default function Smileys({
     }
   }, []);
 
-  const handleInputChange = (e) => {
+  const handleSmileyInputChange = (e) => {
     setFormData({ ...formData, smiley: e.target.value });
-    setIsToggled(true);
-  };
+    setSmileySelection(e.target.value);
+    localStorage.setItem("smileySelection", e.target.value);
 
-  const { isChecked } = checkedRadio;
+    setIsToggled(true);
+    // setCheckedRadio({ isChecked: e.target.value });
+  };
+  //   const { isChecked } = checkedRadio;
   return (
     <>
       {listOfOptions.map((smiley, index) => {
@@ -43,18 +47,21 @@ export default function Smileys({
           <label key={index} htmlFor={smileyName}>
             {smileyName}
             <input
-              checked={isChecked === smileyName}
+              checked={formData.smiley === smileyName}
               onClick={() => {
-                setCheckedRadio({ isChecked: smileyName });
+                //   setCheckedRadio({ isChecked: smileyName });
                 setIsToggled(true);
+                setSmileySelection(smileyName);
                 localStorage.setItem("smileySelection", smileyName);
+                //   localStorage.setItem("smileySelection", smileyName);
               }}
               type="radio"
               id={smileyName}
               name={name}
               value={smileyName}
               required={required}
-              onChange={handleInputChange}
+              onChange={handleSmileyInputChange}
+              onClick={handleSmileySelection}
             />
           </label>
         );

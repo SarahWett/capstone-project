@@ -13,6 +13,7 @@ const Message = ({ formData, setFormData }) => {
         type="text"
         id="message"
         name="message"
+        required
         onChange={(event) =>
           setFormData({ ...formData, message: event.target.value })
         }

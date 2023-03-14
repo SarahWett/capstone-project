@@ -1,10 +1,4 @@
 import { useState, useEffect } from "react";
-import styled from "styled-components";
-
-const StyledCheckboxAreas = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
 
 export default function Tags({
   formData,
@@ -14,9 +8,12 @@ export default function Tags({
   checkedCheckbox,
   setCheckedCheckbox,
   required,
+  handleTagSelection,
+  setTagSelection,
 }) {
+  //initialize object with keys set default to false / reads state from localStorage if existing
   const [state, setState] = useState(() => {
-    const savedState = JSON.parse(localStorage.getItem("tagsState"));
+    const savedState = JSON.parse(localStorage.getItem("tagsSelection"));
     return (
       savedState || {
         family: false,
@@ -31,120 +28,61 @@ export default function Tags({
       }
     );
   });
+  //Ensuring that at least one option is selected
+  // const [isValid, setIsValid] = useState(true);
+  //Update localStorage & formData whenever state changes
+  // useEffect(() => {
+  //   localStorage.setItem("tagsState", JSON.stringify(state));
+  //   setFormData((prevFormData) => ({ ...prevFormData, tags: state }));
+  //   setIsValid(Object.values(state).some((val) => val));
+  // }, [state, setFormData]);
 
-  const [isValid, setIsValid] = useState(true);
-
-  useEffect(() => {
-    localStorage.setItem("tagsState", JSON.stringify(state));
-    setFormData((prevFormData) => ({ ...prevFormData, tags: state }));
-    setIsValid(Object.values(state).some((val) => val));
-  }, [state, setFormData]);
-
-  const handleInputChange = (e) => {
+  // const handleTagInputChange = (e) => {
+  //   const { name, checked } = e.target;
+  //   setState((prevState) => ({ ...prevState, [name]: checked }));
+  //   setFormData({ ...formData, tagSelection: e.target.value });
+  //   setFormData((prevFormData) => ({ ...prevFormData, tags: state }));
+  //   setTagSelection(e.target.value);
+  //   localStorage.setItem("tagSelection", e.target.value);
+  //Checking if at least one checknbox is checked
+  // const isValid = Object.values(checkedCheckbox.isChecked).some((val) => val);
+  // }
+  const handleTagInputChange = (e) => {
     const { name, checked } = e.target;
     setState((prevState) => ({ ...prevState, [name]: checked }));
-    //Checking if at least one checknbox is checked
-    setIsValid(Object.values({ ...state, [name]: checked }).some((val) => val));
+    const selectedTags = Object.entries(state)
+      .filter(([key, value]) => value)
+      .map(([key, value]) => key);
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      tags: selectedTags,
+    }));
+    setTagSelection(selectedTags);
+    localStorage.setItem("tagSelection", JSON.stringify(selectedTags));
+    console.log("new Tags selected");
   };
 
   //   const { isChecked } = checkedCheckbox;
   return (
     <>
-      {listOfOptions.map((tags, index) => {
+      {listOfOptions.map((tags) => {
         const { tagName } = tags;
+        const lowerCaseTagName = tagName.toLowerCase();
         return (
-          <label htmlFor="family" key={index}>
+          <label htmlFor={lowerCaseTagName} key={lowerCaseTagName}>
             {tagName}
             <input
               type="checkbox"
-              id={tagName}
-              name={name}
-              value={tagName}
-              //   checked={isChecked === tagName}
-              onChange={handleInputChange}
+              id={lowerCaseTagName}
+              name={lowerCaseTagName}
+              value={lowerCaseTagName}
+              checked={state[lowerCaseTagName]}
+              onChange={handleTagInputChange}
+              onClick={handleTagSelection}
             />
           </label>
         );
       })}
-
-      {/* {formData.tags === [] && <p>Please select at least one checkbox.</p>}
-      <StyledCheckboxAreas>
-        <label htmlFor="family">Family</label>
-        <input
-          type="checkbox"
-          id="family"
-          name="family"
-          value="family"
-          checked={state.family}
-          onChange={handleInputChange}
-        />
-      </StyledCheckboxAreas>
-      <StyledCheckboxAreas>
-        <label htmlFor="sports">Sports</label>
-        <input
-          type="checkbox"
-          id="sports"
-          name="sports"
-          value="sports"
-          checked={state.sports}
-          onChange={handleInputChange}
-        />
-      </StyledCheckboxAreas>
-      <StyledCheckboxAreas>
-        <label htmlFor="walk">Walk</label>
-        <input
-          type="checkbox"
-          id="walk"
-          name="walk"
-          value="walk"
-          checked={state.walk}
-          onChange={handleInputChange}
-        />
-      </StyledCheckboxAreas>
-      <StyledCheckboxAreas>
-        <label htmlFor="friends">Friends</label>
-        <input
-          type="checkbox"
-          id="friends"
-          name="friends"
-          value="friends"
-          checked={state.friends}
-          onChange={handleInputChange}
-        />
-      </StyledCheckboxAreas>
-      <StyledCheckboxAreas>
-        <label htmlFor="work">Work</label>
-        <input
-          type="checkbox"
-          id="work"
-          name="work"
-          value="work"
-          checked={state.work}
-          onChange={handleInputChange}
-        />{" "}
-      </StyledCheckboxAreas>
-      <StyledCheckboxAreas>
-        <label htmlFor="partner">Partner</label>
-        <input
-          type="checkbox"
-          id="partner"
-          name="partner"
-          value="partner"
-          checked={state.partner}
-          onChange={handleInputChange}
-        />
-      </StyledCheckboxAreas>
-      <StyledCheckboxAreas>
-        <label htmlFor="hobby">Hobby</label>
-        <input
-          type="checkbox"
-          id="hobby"
-          name="hobby"
-          value="hobby"
-          checked={state.hobby}
-          onChange={handleInputChange}
-        />
-      </StyledCheckboxAreas> */}
     </>
   );
 }
