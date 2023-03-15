@@ -45,6 +45,10 @@ export const StyledProgress = styled.div`
 `;
 
 export const StyledPageDisplay = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
   padding: 2vh 5vh 2vh 5vh;
   line-height: 5vh;
 `;

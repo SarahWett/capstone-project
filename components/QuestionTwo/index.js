@@ -1,3 +1,5 @@
+import { StyledInput } from "./Q2Styles";
+
 export default function Tags({ formData, setFormData, listOfOptions }) {
   function handleOnChange(event) {
     const newTagsObject = formData.tags;
@@ -12,7 +14,7 @@ export default function Tags({ formData, setFormData, listOfOptions }) {
         const lowerCaseTagName = tagName.toLowerCase();
 
         return (
-          <label htmlFor={lowerCaseTagName} key={lowerCaseTagName}>
+          <StyledInput htmlFor={lowerCaseTagName} key={lowerCaseTagName}>
             {tagName}
             <input
               type="checkbox"
@@ -22,7 +24,7 @@ export default function Tags({ formData, setFormData, listOfOptions }) {
               checked={formData.tags[lowerCaseTagName]}
               onChange={handleOnChange}
             />
-          </label>
+          </StyledInput>
         );
       })}
     </>
