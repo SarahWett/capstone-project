@@ -69,17 +69,23 @@ export const StyledFooter = styled.div`
 `;
 
 export const StyledSavedText = styled.h1`
-  padding: 15vh;
-  margin: 0;
+  /* padding: 15vh;
+  margin: 0; */
   color: #172e4f;
-  width: 360px;
-  height: 400px;
-  border-radius: 8px;
-  box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
-  display: flex;
-  background: rgba(199, 87, 160, 0.05);
+  font-family: "Roboto", sans-serif;
+  margin-top: 14vh;
+  font-size: 3.5rem;
+`;
+
+export const StyledSavedTextContainer = styled.div`
+  text-align: center;
+  height: 60vh;
+  letter-spacing: 8px;
+  padding: 3vh 5vh 3vh 5vh;
+  background: rgba(53, 95, 151, 0.26);
   border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(5px);
-  border: 1px solid rgba(199, 87, 160, 0.59);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(9.9px);
+  border: 1px solid rgba(53, 95, 151, 0.15);
+  margin: 3.5vh;
 `;
