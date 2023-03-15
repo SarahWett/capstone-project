@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { Button } from "./StyledHomeButton";
+import { StyledHomeLink } from "./StyledHomeButton";
 
 export default function HomeButton() {
   return (
-    <Button type="button">
+    <StyledHomeLink>
       <Link href={"/"}>
         <svg
           width="40"
@@ -26,6 +26,6 @@ export default function HomeButton() {
           />
         </svg>
       </Link>
-    </Button>
+    </StyledHomeLink>
   );
 }

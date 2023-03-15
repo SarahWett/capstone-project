@@ -1,15 +1,16 @@
 import Link from "next/link";
 import styled from "styled-components";
 
-const Button = styled.button`
+const StyledNavLink = styled.li`
   background: #f2f2f2;
   border: 1px solid #fff;
   border-radius: 50%;
+  list-style: none;
 `;
 
 export default function AddButton() {
   return (
-    <Button type="button">
+    <StyledNavLink>
       <Link href={"/survey"}>
         <svg
           width="60"
@@ -26,6 +27,6 @@ export default function AddButton() {
           />
         </svg>
       </Link>
-    </Button>
+    </StyledNavLink>
   );
 }

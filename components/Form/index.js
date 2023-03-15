@@ -18,6 +18,7 @@ import {
   StyledProgressBar,
   CancelButton,
   StyledSavedTextContainer,
+  StyledConfirmButton,
 } from "./StyledForm";
 import useLocalStorageState from "use-local-storage-state";
 
@@ -60,37 +61,94 @@ export default function Form({}) {
   const PageDisplay = () => {
     if (page === 0) {
       return (
-        <Smileys
-          formData={formData}
-          setFormData={setFormData}
-          listOfOptions={[
-            { smileyName: "awesome" },
-            { smileyName: "good" },
-            { smileyName: "okay" },
-            { smileyName: "aweful" },
-          ]}
-        />
+        <>
+          <Smileys
+            formData={formData}
+            setFormData={setFormData}
+            listOfOptions={[
+              { smileyName: "awesome" },
+              { smileyName: "good" },
+              { smileyName: "okay" },
+              { smileyName: "aweful" },
+            ]}
+          />
+          <StyledFooter>
+            <FormButton
+              type="button"
+              disabled={page === FormTitles.length - 1 || formData.smiley < 1}
+              onClick={() => {
+                setPage((currentPage) => currentPage + 1);
+              }}
+            >
+              Next
+            </FormButton>
+          </StyledFooter>
+        </>
       );
     } else if (page === 1) {
       return (
-        <Tags
-          formData={formData}
-          setFormData={setFormData}
-          listOfOptions={[
-            { tagName: "Family" },
-            { tagName: "Friends" },
-            { tagName: "Partner" },
-            { tagName: "Work" },
-            { tagName: "Hobby" },
-            { tagName: "Household" },
-            { tagName: "TV" },
-            { tagName: "Sports" },
-            { tagName: "Walk" },
-          ]}
-        />
+        <>
+          <Tags
+            formData={formData}
+            setFormData={setFormData}
+            listOfOptions={[
+              { tagName: "Family" },
+              { tagName: "Friends" },
+              { tagName: "Partner" },
+              { tagName: "Work" },
+              { tagName: "Hobby" },
+              { tagName: "Household" },
+              { tagName: "TV" },
+              { tagName: "Sports" },
+              { tagName: "Walk" },
+            ]}
+          />
+          <StyledFooter>
+            <FormButton
+              type="button"
+              disabled={page === 0}
+              onClick={() => {
+                setPage((currentPage) => currentPage - 1);
+              }}
+            >
+              Prev
+            </FormButton>
+            <FormButton
+              type="button"
+              disabled={page === FormTitles.length - 1 || formData.smiley < 1}
+              onClick={() => {
+                setPage((currentPage) => currentPage + 1);
+              }}
+            >
+              Next
+            </FormButton>
+          </StyledFooter>
+        </>
       );
     } else {
-      return <Message formData={formData} setFormData={setFormData} />;
+      return (
+        <>
+          {" "}
+          <Message formData={formData} setFormData={setFormData} />
+          <StyledFooter>
+            <FormButton
+              type="button"
+              disabled={page === 0}
+              onClick={() => {
+                setPage((currentPage) => currentPage - 1);
+              }}
+            >
+              Prev
+            </FormButton>
+            <StyledConfirmButton
+              type="submit"
+              disabled={page !== FormTitles.length - 1}
+            >
+              Confirm
+            </StyledConfirmButton>
+          </StyledFooter>
+        </>
+      );
     }
   };
 
@@ -165,35 +223,6 @@ export default function Form({}) {
                 <StyledHeader>{FormTitles[page]}</StyledHeader>
               </div>
               <StyledPageDisplay>{PageDisplay()}</StyledPageDisplay>
-              <StyledFooter>
-                <FormButton
-                  type="button"
-                  disabled={page === 0}
-                  onClick={() => {
-                    setPage((currentPage) => currentPage - 1);
-                  }}
-                >
-                  Prev
-                </FormButton>
-                <FormButton
-                  type="submit"
-                  disabled={page !== FormTitles.length - 1}
-                >
-                  Confirm
-                </FormButton>
-
-                <FormButton
-                  type="button"
-                  disabled={
-                    page === FormTitles.length - 1 || formData.smiley < 1
-                  }
-                  onClick={() => {
-                    setPage((currentPage) => currentPage + 1);
-                  }}
-                >
-                  Next
-                </FormButton>
-              </StyledFooter>
             </StyledFormContainer>
           </StyledForm>
           <Navbar>

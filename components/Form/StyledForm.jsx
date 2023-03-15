@@ -65,7 +65,10 @@ export const StyledFooter = styled.div`
   display: flex;
   position: fixed;
   bottom: 0%;
+  width: 80vw;
   align-self: center;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const StyledSavedText = styled.h1`
@@ -88,4 +91,20 @@ export const StyledSavedTextContainer = styled.div`
   backdrop-filter: blur(9.9px);
   border: 1px solid rgba(53, 95, 151, 0.15);
   margin: 3.5vh;
+`;
+
+export const StyledConfirmButton = styled.button`
+  width: 100px;
+  height: 40px;
+  background-color: #049350;
+  font-weight: bold;
+  color: white;
+  border: 0.5px solid green;
+  border-radius: 15px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  padding: 10px 5px;
+  margin: 10px 5px;
+  margin: 5px;
 `;
