@@ -1,13 +1,31 @@
 import { StyledInput } from "./Q2Styles";
 
-export default function Tags({ formData, setFormData, listOfOptions }) {
+export default function Tags({
+  entries,
+  setEntries,
+  formData,
+  setFormData,
+  listOfOptions,
+}) {
   function handleOnChange(event) {
-    const newTagsObject = formData.tags;
-    const keyToUpdate = event.target.name;
-    newTagsObject[keyToUpdate] = !newTagsObject[keyToUpdate];
-    setFormData({ ...formData, tags: newTagsObject });
+    // const keyToUpdate = event.target.name;
+    // setFormData({
+    //   ...formData,
+    //   tags: {
+    //     ...formData.tags,
+    //     [keyToUpdate]: !formData.tags[keyToUpdate],
+    //   },
+    // });
+    // setFormData(...formData, { ...entries });
   }
-  console.log(formData);
+
+  //IDEA TO GET TAGS ON SUNDAY:
+  // function handleCheckboxChange(event, index) {
+  //   const isCheckedCopy = [...checkedCheckbox.isChecked]; // create a copy of the state array
+  //   isCheckedCopy[index] = event.target.checked; // update the copy with the new value
+  //   setCheckedCheckbox({ isChecked: isCheckedCopy }); // update the state with the new array
+  // }
+
   return (
     <>
       {listOfOptions.map(({ tagName }) => {
@@ -21,7 +39,7 @@ export default function Tags({ formData, setFormData, listOfOptions }) {
               id={lowerCaseTagName}
               name={lowerCaseTagName}
               value={lowerCaseTagName}
-              checked={formData.tags[lowerCaseTagName]}
+              // checked={formData?.tags?.[lowerCaseTagName] || false}
               onChange={handleOnChange}
             />
           </StyledInput>

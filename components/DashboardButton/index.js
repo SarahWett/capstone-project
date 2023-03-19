@@ -1,8 +1,10 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import styled from "styled-components";
 
 const StyledDBLink = styled.li`
-  background: #f2f2f2;
+  background: ${({ filled }) => (filled ? "#355F97" : "#f2f2f2")};
+  color: ${({ filled }) => (filled ? "#fff" : "#000")};
   border: 1px solid #fff;
   border-radius: 20%;
   list-style: none;
@@ -10,8 +12,11 @@ const StyledDBLink = styled.li`
 `;
 
 export default function DBButton() {
+  const router = useRouter();
+  const isDashboardPage = router.pathname === "/dashboard";
+
   return (
-    <StyledDBLink>
+    <StyledDBLink filled={isDashboardPage}>
       <Link href="/dashboard">
         <svg
           width="40"
@@ -22,7 +27,7 @@ export default function DBButton() {
         >
           <path
             d="M17 9L13.9558 13.5662C13.5299 14.2051 12.5728 14.1455 12.2294 13.4587L11.7706 12.5413C11.4272 11.8545 10.4701 11.7949 10.0442 12.4338L7 17"
-            stroke="#355F97"
+            stroke={isDashboardPage ? "#fff" : "#355F97"}
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -33,8 +38,9 @@ export default function DBButton() {
             width="18"
             height="18"
             rx="2"
-            stroke="#355F97"
+            stroke={isDashboardPage ? "#fff" : "#355F97"}
             strokeWidth="2"
+            fill={isDashboardPage ? "#355F97" : "none"}
           />
         </svg>
       </Link>

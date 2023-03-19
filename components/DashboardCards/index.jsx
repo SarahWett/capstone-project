@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import Link from "next/link";
 
 const DashCardsContainer = styled.div`
@@ -42,22 +42,26 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 
-export default function DashCards() {
+export default function DashCards({ formData, setFormData, entries }) {
   return (
     <DashCardsContainer>
-      <StyledLink href="">
-        <DashboardCard>
+      <StyledLink href="dashboard/AllEntries">
+        <DashboardCard
+          formData={formData}
+          setFormData={setFormData}
+          entries={entries}
+        >
           <h2>All Entries</h2>
         </DashboardCard>
       </StyledLink>
       <StyledLink href="">
-        <DashboardCard href="/">
-          <h2>Overview</h2>
+        <DashboardCard>
+          <h2>Mood-Bar</h2>
         </DashboardCard>
       </StyledLink>
       <StyledLink href="">
-        <DashboardCard href="/">
-          <h2>Timeline</h2>
+        <DashboardCard>
+          <h2>Mood-Line</h2>
         </DashboardCard>
       </StyledLink>
     </DashCardsContainer>

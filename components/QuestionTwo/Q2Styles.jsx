@@ -12,8 +12,7 @@ export const StyledInput = styled.label`
   border-radius: 20px;
   width: 25vw;
   &:active,
-  &:focus,
-  &:after {
+  &:checked {
     background: rgba(184, 61, 141, 0.87);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
