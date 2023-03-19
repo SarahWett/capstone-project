@@ -23,22 +23,6 @@ export default function App({ Component, pageProps }) {
 
         message: "XXX",
       },
-      {
-        smiley: "awesome",
-        tags: {
-          family: true,
-          friends: false,
-          partner: false,
-          work: false,
-          hobby: false,
-          household: false,
-          tv: false,
-          sports: false,
-          walk: false,
-        },
-
-        message: "XXX",
-      },
     ],
   });
 

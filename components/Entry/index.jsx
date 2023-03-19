@@ -102,9 +102,7 @@ export default function Entry({
 
         <StyledNotes>{message}</StyledNotes>
         {filtered.map((key) => (
-          <StyledTags key={key} value={key}>
-            {key}
-          </StyledTags>
+          <StyledTags key={key}>{key}</StyledTags>
         ))}
         <div></div>
       </StyledEntryContent>

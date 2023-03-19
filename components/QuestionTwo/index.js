@@ -8,23 +8,23 @@ export default function Tags({
   listOfOptions,
 }) {
   function handleOnChange(event) {
-    // const keyToUpdate = event.target.name;
-    // setFormData({
-    //   ...formData,
-    //   tags: {
-    //     ...formData.tags,
-    //     [keyToUpdate]: !formData.tags[keyToUpdate],
-    //   },
-    // });
-    // setFormData(...formData, { ...entries });
-  }
+    const isChecked = event.target.checked;
+    const tagName = event.target.name;
+    const checkedTags = entries.tags || [];
 
-  //IDEA TO GET TAGS ON SUNDAY:
-  // function handleCheckboxChange(event, index) {
-  //   const isCheckedCopy = [...checkedCheckbox.isChecked]; // create a copy of the state array
-  //   isCheckedCopy[index] = event.target.checked; // update the copy with the new value
-  //   setCheckedCheckbox({ isChecked: isCheckedCopy }); // update the state with the new array
-  // }
+    // Update the checkedTags array based on whether the checkbox is checked or not
+    if (isChecked) {
+      checkedTags.push(tagName);
+    } else {
+      const index = checkedTags.indexOf(tagName);
+      if (index > -1) {
+        checkedTags.splice(index, 1);
+      }
+    }
+
+    // Update the entries state with the new checkedTags array
+    setEntries({ ...entries, tags: checkedTags });
+  }
 
   return (
     <>
@@ -37,9 +37,8 @@ export default function Tags({
             <input
               type="checkbox"
               id={lowerCaseTagName}
-              name={lowerCaseTagName}
-              value={lowerCaseTagName}
-              // checked={formData?.tags?.[lowerCaseTagName] || false}
+              name={tagName}
+              checked={(entries.tags || []).indexOf(tagName) > -1}
               onChange={handleOnChange}
             />
           </StyledInput>
