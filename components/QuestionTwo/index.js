@@ -1,13 +1,36 @@
 import { StyledInput } from "./Q2Styles";
+import { uid } from "uid";
 
-export default function Tags({ formData, setFormData, listOfOptions }) {
+export default function Tags({
+  entries,
+  setEntries,
+  formData,
+  setFormData,
+  listOfOptions,
+  id,
+}) {
   function handleOnChange(event) {
-    const newTagsObject = formData.tags;
     const keyToUpdate = event.target.name;
-    newTagsObject[keyToUpdate] = !newTagsObject[keyToUpdate];
-    setFormData({ ...formData, tags: newTagsObject });
+
+    if (entries.tags.includes(keyToUpdate)) {
+      const copyOfTags = entries.tags;
+      const indexOfClickedTag = copyOfTags.indexOf(keyToUpdate);
+      const updatedTags = [
+        ...copyOfTags.slice(0, indexOfClickedTag),
+        ...copyOfTags.slice(indexOfClickedTag + 1),
+      ];
+      setEntries({
+        ...entries,
+        tags: [...updatedTags],
+      });
+    } else {
+      setEntries({
+        ...entries,
+        tags: [...entries.tags, keyToUpdate],
+      });
+    }
   }
-  console.log(formData);
+
   return (
     <>
       {listOfOptions.map(({ tagName }) => {
@@ -19,9 +42,8 @@ export default function Tags({ formData, setFormData, listOfOptions }) {
             <input
               type="checkbox"
               id={lowerCaseTagName}
-              name={lowerCaseTagName}
-              value={lowerCaseTagName}
-              checked={formData.tags[lowerCaseTagName]}
+              name={tagName}
+              checked={entries.tags.includes(tagName)}
               onChange={handleOnChange}
             />
           </StyledInput>

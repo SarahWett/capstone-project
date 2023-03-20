@@ -1,15 +1,14 @@
-export default function Smileys({ formData, setFormData, listOfOptions }) {
-  // const [isSmileySelected, setIsSmileySelected] = useState(false);
-
+export default function Smileys({
+  formData,
+  setFormData,
+  listOfOptions,
+  entries,
+  smiley,
+  setEntries,
+}) {
   function handleOnChange(event) {
-    setFormData({ ...formData, smiley: event.target.value });
-    // setIsSmileySelected(true);
+    setEntries({ ...entries, smiley: event.target.value });
   }
-
-  // function handleNext() {
-  //   onNext();
-  // }
-
   return (
     <>
       {listOfOptions.map((smiley, index) => {
@@ -18,7 +17,7 @@ export default function Smileys({ formData, setFormData, listOfOptions }) {
           <label key={index} htmlFor={smileyName}>
             {smileyName}
             <input
-              checked={formData.smiley === smileyName}
+              checked={entries?.smiley === smileyName}
               type="radio"
               id={smileyName}
               name="radio"

@@ -6,6 +6,7 @@ const StyledNavLink = styled.li`
   border: 1px solid #fff;
   border-radius: 50%;
   list-style: none;
+  padding: 3%;
 `;
 
 export default function AddButton() {

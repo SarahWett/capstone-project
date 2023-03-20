@@ -4,15 +4,15 @@ const StyledTextarea = styled.textarea`
   width: 100%;
 `;
 
-const Message = ({ formData, setFormData }) => {
+const Message = ({ entries, setEntries }) => {
   function handleOnChange(event) {
-    setFormData({ ...formData, message: event.target.value });
+    setEntries({ ...entries, message: event.target.value });
   }
   return (
     <>
       <StyledTextarea
         rows="8"
-        value={formData.message}
+        value={entries.message}
         type="text"
         id="message"
         name="message"
