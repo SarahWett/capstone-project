@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import NavItems from "../NavItems";
 
 const StyledList = styled.ul`
   display: flex;
