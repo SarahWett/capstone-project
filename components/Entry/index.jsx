@@ -6,7 +6,6 @@ const StyledEntry = styled.article`
   gap: 30px;
   padding: 16vw;
   width: 80vw;
-  /* From https://css.glass */
   background: rgba(255, 255, 255, 0.25);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
@@ -21,7 +20,6 @@ const StyledDate = styled.time`
   align-items: center;
   font-size: 14px;
   font-weight: 600;
-  /* From https://css.glass */
   background: rgba(53, 95, 151, 0.61);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
@@ -64,7 +62,6 @@ const StyledTags = styled.div`
   align-items: center;
   font-size: 14px;
   font-weight: 600;
-  /* From https://css.glass */
   background: rgba(184, 61, 141, 0.62);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);

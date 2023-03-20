@@ -8,12 +8,6 @@ export default function Tags({
   listOfOptions,
 }) {
   function handleOnChange(event) {
-    //LÖSUNG ERNST - THROWS ERROR - UNDEFINED
-    // const newTagsObject = formData.tags;
-    // const keyToUpdate = event.target.name;
-    // newTagsObject[keyToUpdate] = !newTagsObject[keyToUpdate];
-    // setFormData({ ...formData, tags: newTagsObject });
-
     const keyToUpdate = event.target.name;
 
     if (entries.tags.includes(keyToUpdate)) {
@@ -33,20 +27,6 @@ export default function Tags({
         tags: [...entries.tags, keyToUpdate],
       });
     }
-
-    // const isChecked = event.target.checked;
-    // const tagName = event.target.name;
-    // const checkedTags = new Set(entries.tags || []);
-
-    // // Update the checkedTags set based on whether the checkbox is checked or not
-    // if (isChecked) {
-    //   checkedTags.add(tagName);
-    // } else {
-    //   checkedTags.delete(tagName);
-    // }
-
-    // // Update the entries state with the new checkedTags set
-    // setEntries({ ...entries, tags: [...checkedTags] });
   }
 
   return (
