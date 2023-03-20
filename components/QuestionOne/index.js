@@ -8,7 +8,6 @@ export default function Smileys({
 }) {
   function handleOnChange(event) {
     setEntries({ ...entries, smiley: event.target.value });
-    // setFormData(...formData, { ...entries });
   }
   return (
     <>

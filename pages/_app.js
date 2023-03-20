@@ -42,7 +42,7 @@ export default function App({ Component, pageProps }) {
     // const newFormData = ;
     setFormData([...formData, { ...entries, date }]);
   }
-  console.log(formData);
+
   return (
     <>
       <GlobalStyle />

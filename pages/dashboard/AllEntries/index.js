@@ -49,7 +49,6 @@ export default function EntriesSection({
   allEntriesCount,
   entries,
 }) {
-  console.log(formData);
   return (
     <>
       <Heading>Your Mood:</Heading>
@@ -61,9 +60,6 @@ export default function EntriesSection({
         <StyledEntries>
           {formData?.map((data) => (
             <Fragment key={data.id}>
-              {/* {formData
-  .sort((a, b) => new Date(b.date) - new Date(a.date))
-  .map((data) => ( */}
               <Entry
                 key={data.id}
                 smiley={data.smiley}
@@ -71,11 +67,7 @@ export default function EntriesSection({
                 date={data.date}
                 tags={data.tags}
                 id={data.id}
-                // formData={formData}
-                // setFormData={setFormData}
-                // data={data}
               />
-              {/* ))} */}
             </Fragment>
           ))}
         </StyledEntries>

@@ -84,9 +84,6 @@ export default function Form({
             entries={entries}
             setEntries={setEntries}
             onAddEntry={handleAddEntry}
-            // setCheckedCheckbox={setCheckedCheckbox}
-            // checkedCheckbox={checkedCheckbox}
-            // isChecked={checkedCheckbox.isChecked}
             listOfOptions={[
               { tagName: "Family" },
               { tagName: "Friends" },
@@ -168,30 +165,10 @@ export default function Form({
 
     setTimeout(() => {
       setShowSavedPage(false);
-      // setEntries([
-      //   {
-      //     smiley: "",
-      //     tags: {
-      //       family: false,
-      //       friends: false,
-      //       partner: false,
-      //       work: false,
-      //       hobby: false,
-      //       household: false,
-      //       tv: false,
-      //       sports: false,
-      //       walk: false,
-      //     },
-
-      //     message: "",
-      //   },
-      // ]);
 
       setEntries({ smiley: "", tags: [], message: "" });
       router.push("/");
     }, 2000);
-
-    //setCheckedCheckbox({ isChecked: [] });
   }
   return (
     <>

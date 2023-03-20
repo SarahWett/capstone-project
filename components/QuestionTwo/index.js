@@ -15,8 +15,6 @@ export default function Tags({
     // setFormData({ ...formData, tags: newTagsObject });
 
     const keyToUpdate = event.target.name;
-    console.log(keyToUpdate);
-    console.log(entries);
 
     if (entries.tags.includes(keyToUpdate)) {
       const copyOfTags = entries.tags;
@@ -50,7 +48,7 @@ export default function Tags({
     // // Update the entries state with the new checkedTags set
     // setEntries({ ...entries, tags: [...checkedTags] });
   }
-  console.log(entries);
+
   return (
     <>
       {listOfOptions.map(({ tagName }) => {

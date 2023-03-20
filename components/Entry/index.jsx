@@ -51,8 +51,9 @@ const StyledSmileySection = styled.q`
 
 const StyledNotes = styled.p`
   margin: 0;
-  font-size: 14px;
+  font-size: 12px;
   display: flex;
+  text-transform: uppercase;
   justify-content: space-around;
 `;
 
@@ -88,7 +89,6 @@ export default function Entry({
   const filtered = keys.filter((key) => {
     return tags[key];
   });
-  console.log(filtered);
 
   return (
     <StyledEntry>
