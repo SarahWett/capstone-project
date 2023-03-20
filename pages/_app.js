@@ -16,6 +16,8 @@ export default function App({ Component, pageProps }) {
         date: new Date().toLocaleDateString("en-us", {
           dateStyle: "medium",
         }),
+
+        id: uid(),
       },
     ],
   });
@@ -54,7 +56,7 @@ export default function App({ Component, pageProps }) {
         formData={formData}
         setFormData={setFormData}
         onAddEntry={handleAddEntry}
-        allEntriesCount={0}
+        allEntriesCount={formData.length}
         entries={entries}
         setEntries={setEntries}
       />

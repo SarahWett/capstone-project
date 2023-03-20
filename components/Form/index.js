@@ -29,6 +29,7 @@ export default function Form({
   entries,
   setEntries,
   handleAddEntry,
+  id,
 }) {
   const [page, setPage] = useState(0);
 
@@ -82,6 +83,7 @@ export default function Form({
             formData={formData}
             setFormData={setFormData}
             entries={entries}
+            id={id}
             setEntries={setEntries}
             onAddEntry={handleAddEntry}
             listOfOptions={[

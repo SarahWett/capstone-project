@@ -9,6 +9,7 @@ export default function Survey({
   onAddEntry,
   entries,
   setEntries,
+  id,
 }) {
   return (
     <>
@@ -19,6 +20,7 @@ export default function Survey({
         onAddEntry={onAddEntry}
         entries={entries}
         setEntries={setEntries}
+        id={id}
       />
     </>
   );

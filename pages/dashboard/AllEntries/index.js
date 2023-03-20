@@ -54,21 +54,19 @@ export default function EntriesSection({
       <Heading>Your Mood:</Heading>
       <StyledSection className="entries-section">
         <StyledBatch>
-          All Entries{" "}
+          All Entries{""}
           <Badge isActive={filter === "all"}>{allEntriesCount}</Badge>
         </StyledBatch>
         <StyledEntries>
           {formData?.map((data) => (
-            <Fragment key={data.id}>
-              <Entry
-                key={data.id}
-                smiley={data.smiley}
-                message={data.message}
-                date={data.date}
-                tags={data.tags}
-                id={data.id}
-              />
-            </Fragment>
+            <Entry
+              key={data.id}
+              smiley={data.smiley}
+              message={data.message}
+              date={data.date}
+              tags={data.tags}
+              id={data.id}
+            />
           ))}
         </StyledEntries>
       </StyledSection>

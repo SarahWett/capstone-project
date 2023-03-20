@@ -76,7 +76,6 @@ export default function Entry({
   message,
   date,
   tags,
-  key,
   id,
   formData,
   setFormData,
@@ -101,6 +100,7 @@ export default function Entry({
           <StyledTags key={key}>{key}</StyledTags>
         ))}
       </StyledEntryContent>
+      <button>Edit</button>
     </StyledEntry>
   );
 }

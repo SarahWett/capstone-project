@@ -1,4 +1,5 @@
 import { StyledInput } from "./Q2Styles";
+import { uid } from "uid";
 
 export default function Tags({
   entries,
@@ -6,6 +7,7 @@ export default function Tags({
   formData,
   setFormData,
   listOfOptions,
+  id,
 }) {
   function handleOnChange(event) {
     const keyToUpdate = event.target.name;
