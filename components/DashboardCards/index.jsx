@@ -54,7 +54,7 @@ export default function DashCards({ formData, setFormData, entries }) {
           <h2>All Entries</h2>
         </DashboardCard>
       </StyledLink>
-      {/* <StyledLink href="">
+      <StyledLink href="">
         <DashboardCard>
           <h2>Mood-Bar</h2>
         </DashboardCard>
@@ -63,7 +63,7 @@ export default function DashCards({ formData, setFormData, entries }) {
         <DashboardCard>
           <h2>Mood-Line</h2>
         </DashboardCard>
-      </StyledLink> */}
+      </StyledLink>
     </DashCardsContainer>
   );
 }
