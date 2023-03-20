@@ -8,24 +8,49 @@ export default function Tags({
   listOfOptions,
 }) {
   function handleOnChange(event) {
-    const isChecked = event.target.checked;
-    const tagName = event.target.name;
-    const checkedTags = entries.tags || [];
+    //LÖSUNG ERNST - THROWS ERROR - UNDEFINED
+    // const newTagsObject = formData.tags;
+    // const keyToUpdate = event.target.name;
+    // newTagsObject[keyToUpdate] = !newTagsObject[keyToUpdate];
+    // setFormData({ ...formData, tags: newTagsObject });
 
-    // Update the checkedTags array based on whether the checkbox is checked or not
-    if (isChecked) {
-      checkedTags.push(tagName);
+    const keyToUpdate = event.target.name;
+    console.log(keyToUpdate);
+    console.log(entries);
+
+    if (entries.tags.includes(keyToUpdate)) {
+      const copyOfTags = entries.tags;
+      const indexOfClickedTag = copyOfTags.indexOf(keyToUpdate);
+      const updatedTags = [
+        ...copyOfTags.slice(0, indexOfClickedTag),
+        ...copyOfTags.slice(indexOfClickedTag + 1),
+      ];
+      setEntries({
+        ...entries,
+        tags: [...updatedTags],
+      });
     } else {
-      const index = checkedTags.indexOf(tagName);
-      if (index > -1) {
-        checkedTags.splice(index, 1);
-      }
+      setEntries({
+        ...entries,
+        tags: [...entries.tags, keyToUpdate],
+      });
     }
 
-    // Update the entries state with the new checkedTags array
-    setEntries({ ...entries, tags: checkedTags });
-  }
+    // const isChecked = event.target.checked;
+    // const tagName = event.target.name;
+    // const checkedTags = new Set(entries.tags || []);
 
+    // // Update the checkedTags set based on whether the checkbox is checked or not
+    // if (isChecked) {
+    //   checkedTags.add(tagName);
+    // } else {
+    //   checkedTags.delete(tagName);
+    // }
+
+    // // Update the entries state with the new checkedTags set
+    // setEntries({ ...entries, tags: [...checkedTags] });
+  }
+  console.log(entries);
   return (
     <>
       {listOfOptions.map(({ tagName }) => {
@@ -38,7 +63,7 @@ export default function Tags({
               type="checkbox"
               id={lowerCaseTagName}
               name={tagName}
-              checked={(entries.tags || []).indexOf(tagName) > -1}
+              checked={entries.tags.includes(tagName)}
               onChange={handleOnChange}
             />
           </StyledInput>

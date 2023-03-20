@@ -9,24 +9,30 @@ export default function App({ Component, pageProps }) {
     defaultValue: [
       {
         smiley: "awesome",
-        tags: {
-          family: true,
-          friends: false,
-          partner: false,
-          work: false,
-          hobby: false,
-          household: false,
-          tv: false,
-          sports: false,
-          walk: false,
-        },
+        tags: ["Family"],
 
-        message: "XXX",
+        message: "FooBar",
+
+        date: new Date().toLocaleDateString("en-us", {
+          dateStyle: "medium",
+        }),
       },
     ],
   });
 
-  const [entries, setEntries] = useState([]);
+  const allEntries = [
+    {
+      smiley: "awesome",
+      tag: ["Family"],
+      message: "Hello World",
+    },
+  ];
+
+  const [entries, setEntries] = useState({
+    smiley: "",
+    tags: [],
+    message: "",
+  });
 
   function handleAddEntry(newEntry) {
     const date = new Date().toLocaleDateString("en-us", {
@@ -48,7 +54,7 @@ export default function App({ Component, pageProps }) {
         formData={formData}
         setFormData={setFormData}
         onAddEntry={handleAddEntry}
-        allEntriesCount={formData.length}
+        allEntriesCount={0}
         entries={entries}
         setEntries={setEntries}
       />

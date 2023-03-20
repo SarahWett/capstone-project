@@ -99,11 +99,11 @@ export default function Entry({
             <StyledSmileySection>{smiley}</StyledSmileySection>
           </h2>
         </StyledEntrySmileyContainer>
-
         <StyledNotes>{message}</StyledNotes>
-        {filtered.map((key) => (
+        {tags.map((key) => (
           <StyledTags key={key}>{key}</StyledTags>
         ))}
+
         <div></div>
       </StyledEntryContent>
     </StyledEntry>

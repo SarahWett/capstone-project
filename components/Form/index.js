@@ -159,15 +159,16 @@ export default function Form({
   function handleSubmit(event) {
     event.preventDefault();
 
-    const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData);
-    onAddEntry(data);
+    // const formData = new FormData(event.target);
+    // const data = Object.fromEntries(formData);
+    // onAddEntry(data);
 
+    onAddEntry();
     setShowSavedPage(true);
 
     setTimeout(() => {
       setShowSavedPage(false);
-      // setFormData([
+      // setEntries([
       //   {
       //     smiley: "",
       //     tags: {
@@ -186,10 +187,11 @@ export default function Form({
       //   },
       // ]);
 
+      setEntries({ smiley: "", tags: [], message: "" });
       router.push("/");
     }, 2000);
 
-    setCheckedCheckbox({ isChecked: [] });
+    //setCheckedCheckbox({ isChecked: [] });
   }
   return (
     <>
