@@ -38,9 +38,9 @@ export default function App({ Component, pageProps }) {
     const date = new Date().toLocaleDateString("en-us", {
       dateStyle: "medium",
     });
+    const id = uid();
 
-    // const newFormData = ;
-    setFormData([...formData, { ...entries, date }]);
+    setFormData([...formData, { ...entries, id, date }]);
   }
 
   return (

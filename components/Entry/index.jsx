@@ -100,8 +100,6 @@ export default function Entry({
         {tags.map((key) => (
           <StyledTags key={key}>{key}</StyledTags>
         ))}
-
-        <div></div>
       </StyledEntryContent>
     </StyledEntry>
   );

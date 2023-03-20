@@ -156,10 +156,6 @@ export default function Form({
   function handleSubmit(event) {
     event.preventDefault();
 
-    // const formData = new FormData(event.target);
-    // const data = Object.fromEntries(formData);
-    // onAddEntry(data);
-
     onAddEntry();
     setShowSavedPage(true);
 
