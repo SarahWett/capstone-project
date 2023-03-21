@@ -71,20 +71,31 @@ const StyledTags = styled.div`
   width: 20vw;
 `;
 
+const StyledDeleteButton = styled.button`
+  display: flex;
+  justify-content: center;
+  text-align: center;
+`;
+
 export default function Entry({
   smiley,
   message,
   date,
   tags,
   id,
-  formData,
-  setFormData,
+  setEntries,
+  entries,
   entry,
 }) {
   const keys = tags ? Object.keys(tags) : [];
   const filtered = keys.filter((key) => {
     return tags[key];
   });
+
+  function handleDelete(idToRemove) {
+    setEntries(entriesArray.filter((entry) => entry.id !== idToRemove));
+    console.log(entriesArray.id, idToRemove);
+  }
 
   return (
     <StyledEntry>
@@ -100,7 +111,9 @@ export default function Entry({
           <StyledTags key={key}>{key}</StyledTags>
         ))}
       </StyledEntryContent>
-      <button>Edit</button>
+      <StyledDeleteButton type="button" onClick={() => handleDelete(id)}>
+        X
+      </StyledDeleteButton>
     </StyledEntry>
   );
 }

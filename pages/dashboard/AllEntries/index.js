@@ -47,6 +47,7 @@ export default function EntriesSection({
   id,
   tags,
   allEntriesCount,
+  setEntries,
   entries,
 }) {
   return (
@@ -66,6 +67,8 @@ export default function EntriesSection({
               date={data.date}
               tags={data.tags}
               id={data.id}
+              entries={entries}
+              setEntries={setEntries}
             />
           ))}
         </StyledEntries>

@@ -163,7 +163,7 @@ export default function Form({
 
     setTimeout(() => {
       setShowSavedPage(false);
-
+      console.log(entries);
       setEntries({ smiley: "", tags: [], message: "" });
       router.push("/");
     }, 2000);
