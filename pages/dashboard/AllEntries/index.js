@@ -69,6 +69,8 @@ export default function EntriesSection({
               id={data.id}
               entries={entries}
               setEntries={setEntries}
+              formData={formData}
+              setFormData={setFormData}
             />
           ))}
         </StyledEntries>

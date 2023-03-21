@@ -84,6 +84,8 @@ export default function Entry({
   tags,
   id,
   setEntries,
+  setFormData,
+  formData,
   entries,
   entry,
 }) {
@@ -93,8 +95,8 @@ export default function Entry({
   });
 
   function handleDelete(idToRemove) {
-    setEntries(entriesArray.filter((entry) => entry.id !== idToRemove));
-    console.log(entriesArray.id, idToRemove);
+    setFormData(formData.filter((data) => data.id !== idToRemove));
+    console.log(formData.id, idToRemove);
   }
 
   return (
