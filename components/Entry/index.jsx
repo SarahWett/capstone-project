@@ -73,8 +73,13 @@ const StyledTags = styled.div`
 
 const StyledDeleteButton = styled.button`
   display: flex;
+  border-radius: 5px;
   justify-content: center;
+  align-self: center;
   text-align: center;
+  width: 15vw;
+  background-color: #a92121;
+  color: antiquewhite;
 `;
 
 export default function Entry({
@@ -89,12 +94,13 @@ export default function Entry({
   entries,
   entry,
 }) {
-  const keys = tags ? Object.keys(tags) : [];
-  const filtered = keys.filter((key) => {
-    return tags[key];
-  });
+  // const keys = tags ? Object.keys(tags) : [];
+  // const filtered = keys.filter((key) => {
+  //   return tags[key];
+  // });
 
   function handleDelete(idToRemove) {
+    alert("Are you sure you want to delete this entry?");
     setFormData(formData.filter((data) => data.id !== idToRemove));
     console.log(formData.id, idToRemove);
   }
@@ -109,7 +115,7 @@ export default function Entry({
           </h2>
         </StyledEntrySmileyContainer>
         <StyledNotes>{message}</StyledNotes>
-        {tags.map((key) => (
+        {tags?.map((key) => (
           <StyledTags key={key}>{key}</StyledTags>
         ))}
       </StyledEntryContent>

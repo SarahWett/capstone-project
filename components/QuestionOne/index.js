@@ -7,7 +7,8 @@ export default function Smileys({
   setEntries,
 }) {
   function handleOnChange(event) {
-    setEntries({ ...entries, smiley: event.target.value });
+    const updatedEntry = { ...entries[0], smiley: event.target.value };
+    setEntries([updatedEntry]);
   }
   return (
     <>
@@ -17,7 +18,7 @@ export default function Smileys({
           <label key={index} htmlFor={smileyName}>
             {smileyName}
             <input
-              checked={entries?.smiley === smileyName}
+              checked={entries[0]?.smiley === smileyName}
               type="radio"
               id={smileyName}
               name="radio"

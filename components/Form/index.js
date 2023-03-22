@@ -66,7 +66,7 @@ export default function Form({
             <FormButton
               type="button"
               onAddEntry={handleAddEntry}
-              disabled={entries.smiley === undefined}
+              disabled={!entries[0]?.smiley}
               onClick={() => {
                 setPage((currentPage) => currentPage + 1);
               }}
@@ -110,7 +110,7 @@ export default function Form({
             </FormButton>
             <FormButton
               type="button"
-              disabled={page === FormTitles.length - 1 || entries?.smiley < 1}
+              disabled={page === FormTitles.length - 1 || entries[0]?.tags < 1}
               onClick={() => {
                 setPage((currentPage) => currentPage + 1);
               }}
@@ -164,7 +164,7 @@ export default function Form({
     setTimeout(() => {
       setShowSavedPage(false);
       console.log(entries);
-      setEntries({ smiley: "", tags: [], message: "" });
+      setEntries([{ smiley: "", tags: [], message: "" }]);
       router.push("/");
     }, 2000);
   }
