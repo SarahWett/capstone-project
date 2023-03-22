@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { MdEdit } from "react-icons/md";
 
 const StyledEntry = styled.article`
   display: flex;
@@ -71,20 +72,38 @@ const StyledTags = styled.div`
   width: 20vw;
 `;
 
+const StyledDeleteButton = styled.button`
+  display: flex;
+  border-radius: 50%;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
+  text-align: center;
+  width: 10vw;
+  height: 10vw;
+  background-color: #a92121;
+  color: antiquewhite;
+  &:hover {
+    background-color: #c54646;
+  }
+`;
+
 export default function Entry({
   smiley,
   message,
   date,
   tags,
   id,
-  formData,
+  setEntries,
   setFormData,
+  formData,
+  entries,
   entry,
 }) {
-  const keys = tags ? Object.keys(tags) : [];
-  const filtered = keys.filter((key) => {
-    return tags[key];
-  });
+  function handleDelete(idToRemove) {
+    alert("Are you sure you want to delete this entry?");
+    setFormData(formData.filter((data) => data.id !== idToRemove));
+  }
 
   return (
     <StyledEntry>
@@ -96,11 +115,13 @@ export default function Entry({
           </h2>
         </StyledEntrySmileyContainer>
         <StyledNotes>{message}</StyledNotes>
-        {tags.map((key) => (
+        {tags?.map((key) => (
           <StyledTags key={key}>{key}</StyledTags>
         ))}
       </StyledEntryContent>
-      <button>Edit</button>
+      <StyledDeleteButton type="button" onClick={() => handleDelete(id)}>
+        X
+      </StyledDeleteButton>
     </StyledEntry>
   );
 }

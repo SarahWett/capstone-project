@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useRouter } from "next/router";
+import { IoArrowBackCircleOutline } from "react-icons/io5";
 
 const StyledBackButton = styled.button`
   color: #fff;

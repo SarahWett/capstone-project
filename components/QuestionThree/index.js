@@ -6,7 +6,8 @@ const StyledTextarea = styled.textarea`
 
 const Message = ({ entries, setEntries }) => {
   function handleOnChange(event) {
-    setEntries({ ...entries, message: event.target.value });
+    const updatedEntry = { ...entries[0], message: event.target.value };
+    setEntries([updatedEntry]);
   }
   return (
     <>

@@ -5,7 +5,7 @@ import { uid } from "uid";
 import useLocalStorageState from "use-local-storage-state";
 
 export default function App({ Component, pageProps }) {
-  const [formData, setFormData] = useLocalStorageState("formData", {
+  const [formData, setFormData] = useLocalStorageState("data", {
     defaultValue: [
       {
         smiley: "awesome",
@@ -30,10 +30,14 @@ export default function App({ Component, pageProps }) {
     },
   ];
 
-  const [entries, setEntries] = useState({
-    smiley: "",
-    tags: [],
-    message: "",
+  const [entries, setEntries] = useLocalStorageState("currentEntry", {
+    defaultValue: [
+      {
+        smiley: "",
+        tags: [],
+        message: "",
+      },
+    ],
   });
 
   function handleAddEntry(newEntry) {
@@ -42,7 +46,7 @@ export default function App({ Component, pageProps }) {
     });
     const id = uid();
 
-    setFormData([...formData, { ...entries, id, date }]);
+    setFormData([...formData, { ...entries[0], id, date }]);
   }
 
   return (
