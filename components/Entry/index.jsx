@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { MdEdit } from "react-icons/md";
+import router from "next/router";
+import EditForm from "@/pages/dashboard/AllEntries/[id]";
 
 const StyledEntry = styled.article`
   display: flex;
@@ -46,6 +48,8 @@ const StyledSmileySection = styled.q`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 20px;
+  text-transform: uppercase;
 `;
 
 const StyledNotes = styled.p`
@@ -122,6 +126,13 @@ export default function Entry({
       <StyledDeleteButton type="button" onClick={() => handleDelete(id)}>
         X
       </StyledDeleteButton>
+      <button
+        type="button"
+        onClick={() => router.push(`/dashboard/AllEntries/${id}`)}
+      >
+        Edit
+        <MdEdit />
+      </button>
     </StyledEntry>
   );
 }
