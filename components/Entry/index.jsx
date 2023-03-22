@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { MdEdit } from "react-icons/md";
 
 const StyledEntry = styled.article`
   display: flex;
@@ -73,13 +74,18 @@ const StyledTags = styled.div`
 
 const StyledDeleteButton = styled.button`
   display: flex;
-  border-radius: 5px;
+  border-radius: 50%;
   justify-content: center;
   align-self: center;
+  align-items: center;
   text-align: center;
-  width: 15vw;
+  width: 10vw;
+  height: 10vw;
   background-color: #a92121;
   color: antiquewhite;
+  &:hover {
+    background-color: #c54646;
+  }
 `;
 
 export default function Entry({
@@ -94,15 +100,9 @@ export default function Entry({
   entries,
   entry,
 }) {
-  // const keys = tags ? Object.keys(tags) : [];
-  // const filtered = keys.filter((key) => {
-  //   return tags[key];
-  // });
-
   function handleDelete(idToRemove) {
     alert("Are you sure you want to delete this entry?");
     setFormData(formData.filter((data) => data.id !== idToRemove));
-    console.log(formData.id, idToRemove);
   }
 
   return (
