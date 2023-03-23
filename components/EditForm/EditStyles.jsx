@@ -9,15 +9,15 @@ export const StyledTextarea = styled.textarea`
 export const StyledEditFormContainer = styled.div`
   width: 360px;
   height: 150vh400px;
-  padding: 10vw;
+  padding: 3vw;
   border-radius: 8px;
   box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
   display: flex;
   flex-direction: column;
-
-  background: rgba(199, 87, 160, 0.05);
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.41);
   border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
-  border: 1px solid rgba(157, 128, 147, 0.59);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 `;

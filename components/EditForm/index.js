@@ -4,6 +4,8 @@ import { IoCheckmarkDoneCircleOutline } from "react-icons/io5";
 import useLocalStorageState from "use-local-storage-state";
 import { StyledTextarea } from "./EditStyles";
 import { StyledEditFormContainer } from "./EditStyles";
+import { useState } from "react";
+import { useRouter } from "next/router";
 
 const listOfTagOptions = [
   { tagName: "Family" },
@@ -24,72 +26,60 @@ const listOfSmileyOptions = [
   { smileyName: "aweful" },
 ];
 
-export default function EditForm({
-  formData,
-  setFormData,
-  id,
-  smiley,
-  tags,
-  message,
-}) {
-  const [edit, setEdit] = useLocalStorageState("currentEdit", {
-    defaultValue: [
-      {
-        smiley: "",
-        tags: [],
-        message: "",
-      },
-    ],
-  });
+export default function EditForm({ formData, setFormData, entry }) {
+  const router = useRouter();
 
-  function handleEditEntry(editedEntry) {
-    setFormData(formData.date, formData.id, { edit });
-  }
+  const [edit, setEdit] = useState(entry);
+  console.log(edit);
+
   function handleSmileyChange(event) {
-    const updateEditEntry = { ...edit[0], smiley: event.target.value };
-    setEdit([updateEditEntry]);
+    console.log(event.target.value);
+    setEdit({ ...edit, smiley: event.target.value });
   }
 
   function handleTagsChange(event) {
+    console.log(event.target.name);
     const keyToUpdate = event.target.name;
 
-    if (edit[0].tags.includes(keyToUpdate)) {
-      const copyOfTags = edit[0].tags;
+    if (edit.tags.includes(keyToUpdate)) {
+      const copyOfTags = edit.tags;
       const indexOfClickedTag = copyOfTags.indexOf(keyToUpdate);
       const updatedTags = [
         ...copyOfTags.slice(0, indexOfClickedTag),
         ...copyOfTags.slice(indexOfClickedTag + 1),
       ];
       const updatedTagsEntry = {
-        ...edit[0],
+        ...edit,
         tags: [...updatedTags],
       };
-      setEdit([updatedTagsEntry]);
+      setEdit(updatedTagsEntry);
     } else {
       const updatedTagsEntry = {
-        ...edit[0],
-        tags: [...edit[0].tags, keyToUpdate],
+        ...edit,
+        tags: [...edit.tags, keyToUpdate],
       };
-      setEdit([updatedTagsEntry]);
+      setEdit(updatedTagsEntry);
     }
   }
 
   function handleMessageChange(event) {
-    const updatedMessageEntry = { ...edit[0], message: event.target.value };
-    setEdit([updatedMessageEntry]);
+    setEdit({ ...edit, message: event.target.value });
   }
+  // HANDLEEDIT IS NOT WORKING YET - CRASHES THE APP BY TRANSFORMING FORMDATA TO BE NOT AN ARRAY ANYMORE
 
-  function handleEdit(event) {
-    event.preventDefault();
+  //   function handleEdit(event) {
+  //     event.preventDefault();
+  //     setFormData((prevFormData) => ({
+  //       ...prevFormData,
+  //       smiley: edit.smiley,
+  //       tags: edit.tags,
+  //       message: edit.message,
+  //     }));
 
-    // to do next US: onAddEditEntry();
-    setShowSavedPage(true);
-
-    setTimeout(() => {
-      setEdit([{ smiley: "", tags: [], message: "" }]);
-      router.push("/dashboard/AllEntries");
-    }, 2000);
-  }
+  //     setTimeout(() => {
+  //       router.push("/dashboard/AllEntries");
+  //     }, 2000);
+  //   }
 
   return (
     <form>
@@ -101,11 +91,11 @@ export default function EditForm({
             <label key={index} htmlFor={smileyName}>
               {smileyName}
               <input
-                checked={edit[0]?.smiley === smileyName}
+                checked={edit?.smiley === smileyName}
                 type="radio"
                 id={smileyName}
                 name="radio"
-                value={formData.smiley}
+                value={smileyName}
                 required={true}
                 onChange={handleSmileyChange}
               />
@@ -123,21 +113,21 @@ export default function EditForm({
                 type="checkbox"
                 id={lowerCaseTagName}
                 name={tagName}
-                value={formData.tags}
-                checked={edit[0].tags.includes(tagName)}
+                value={lowerCaseTagName}
+                checked={edit?.tags.includes(tagName)}
                 onChange={handleTagsChange}
               />
             </label>
           );
         })}
-        return (
+
         <>
           <h2>
             Please write what first comes into your mind thinking of today:
           </h2>
           <StyledTextarea
             rows="8"
-            value={edit.message}
+            value={edit?.message}
             type="text"
             id="message"
             name="message"
@@ -145,8 +135,10 @@ export default function EditForm({
             onChange={handleMessageChange}
           />
         </>
-        );
-        <button>
+        <button
+          type="submit"
+          // onClick={handleEdit}
+        >
           Done! <IoCheckmarkDoneCircleOutline />
         </button>
       </StyledEditFormContainer>
