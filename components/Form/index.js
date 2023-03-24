@@ -21,6 +21,12 @@ import {
   StyledConfirmButton,
 } from "./StyledForm";
 import { uid } from "uid";
+import {
+  BsEmojiLaughing,
+  BsEmojiSmile,
+  BsEmojiExpressionless,
+  BsEmojiFrown,
+} from "react-icons/bs";
 
 export default function Form({
   formData,
@@ -56,12 +62,25 @@ export default function Form({
             setFormData={setFormData}
             onAddEntry={handleAddEntry}
             listOfOptions={[
-              { smileyName: "awesome" },
-              { smileyName: "good" },
-              { smileyName: "okay" },
-              { smileyName: "aweful" },
+              {
+                smileyName: "awesome",
+                icon: <BsEmojiLaughing size={"2em"} color={"#172E4F"} />,
+              },
+              {
+                smileyName: "good",
+                icon: <BsEmojiSmile size={"2em"} color={"#172E4F"} />,
+              },
+              {
+                smileyName: "okay",
+                icon: <BsEmojiExpressionless size={"2em"} color={"#172E4F"} />,
+              },
+              {
+                smileyName: "aweful",
+                icon: <BsEmojiFrown size={"2em"} color={"#172E4F"} />,
+              },
             ]}
           />
+
           <StyledFooter>
             <FormButton
               type="button"

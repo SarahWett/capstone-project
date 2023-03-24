@@ -54,6 +54,7 @@ export const StyledHeading = styled.h1`
   padding: 1vh 5vh 1vh 5vh;
   margin: 0;
   margin-top: 4vh;
+  margin-bottom: 2vh;
   font-size: 1.5em;
   color: #172e4f;
 `;
@@ -111,4 +112,20 @@ export const StyledDoneButton = styled.button`
     box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px,
       rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
   }
+`;
+
+export const StyledSmileySection = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4vh;
+  align-items: center;
+  margin-left: 8vw;
+`;
+
+export const StyledLabel = styled.label`
+  display: flex;
+  flex-direction: row;
+  gap: 5vw;
+  align-items: center;
+  align-self: flex-start;
 `;

@@ -63,6 +63,7 @@ export default function EntriesSection({
             <Entry
               key={data.id}
               smiley={data.smiley}
+              icon={data.icon}
               message={data.message}
               date={data.date}
               tags={data.tags}

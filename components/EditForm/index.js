@@ -7,10 +7,18 @@ import {
   StyledHeading,
   StyledDiv,
   StyledDoneButton,
+  StyledSmileySection,
+  StyledLabel,
 } from "./EditStyles";
 import { StyledEditFormContainer } from "./EditStyles";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import {
+  BsEmojiLaughing,
+  BsEmojiSmile,
+  BsEmojiExpressionless,
+  BsEmojiFrown,
+} from "react-icons/bs";
 import Navbar from "../Navigation";
 
 const listOfTagOptions = [
@@ -26,10 +34,19 @@ const listOfTagOptions = [
 ];
 
 const listOfSmileyOptions = [
-  { smileyName: "awesome" },
-  { smileyName: "good" },
-  { smileyName: "okay" },
-  { smileyName: "aweful" },
+  {
+    smileyName: "awesome",
+    icon: <BsEmojiLaughing size={"2em"} color={"#172E4F"} />,
+  },
+  { smileyName: "good", icon: <BsEmojiSmile size={"2em"} color={"#172E4F"} /> },
+  {
+    smileyName: "okay",
+    icon: <BsEmojiExpressionless size={"2em"} color={"#172E4F"} />,
+  },
+  {
+    smileyName: "aweful",
+    icon: <BsEmojiFrown size={"2em"} color={"#172E4F"} />,
+  },
 ];
 
 export default function EditForm({ formData, setFormData, entry }) {
@@ -124,11 +141,12 @@ export default function EditForm({ formData, setFormData, entry }) {
         <form onSubmit={handleEdit}>
           <StyledEditFormContainer>
             <StyledHeading>How are you feeling today?</StyledHeading>
-            <StyledDiv>
+            <StyledSmileySection>
               {listOfSmileyOptions.map((smiley, index) => {
-                const { smileyName } = smiley;
+                const { smileyName, icon } = smiley;
                 return (
-                  <label key={index} htmlFor={smileyName}>
+                  <StyledLabel key={index} htmlFor={smileyName}>
+                    {icon}
                     {smileyName}
                     <input
                       checked={edit?.smiley === smileyName}
@@ -139,10 +157,10 @@ export default function EditForm({ formData, setFormData, entry }) {
                       required={true}
                       onChange={handleSmileyChange}
                     />
-                  </label>
+                  </StyledLabel>
                 );
               })}
-            </StyledDiv>
+            </StyledSmileySection>
             <StyledHeading>What did you deal with?</StyledHeading>
             <StyledDiv>
               {listOfTagOptions.map(({ tagName }) => {
