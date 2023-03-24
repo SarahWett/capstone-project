@@ -65,24 +65,25 @@ export default function EditForm({ formData, setFormData, entry }) {
   function handleMessageChange(event) {
     setEdit({ ...edit, message: event.target.value });
   }
-  // HANDLEEDIT IS NOT WORKING YET - CRASHES THE APP BY TRANSFORMING FORMDATA TO BE NOT AN ARRAY ANYMORE
 
-  //   function handleEdit(event) {
-  //     event.preventDefault();
-  //     setFormData((prevFormData) => ({
-  //       ...prevFormData,
-  //       smiley: edit.smiley,
-  //       tags: edit.tags,
-  //       message: edit.message,
-  //     }));
+  function handleEdit(event) {
+    event.preventDefault();
+    const copyOfFormData = [...formData];
+    const indexToUpdate = copyOfFormData.findIndex(
+      (item) => item.id === edit.id
+    );
 
-  //     setTimeout(() => {
-  //       router.push("/dashboard/AllEntries");
-  //     }, 2000);
-  //   }
+    copyOfFormData[indexToUpdate] = edit;
+
+    setFormData(copyOfFormData);
+
+    setTimeout(() => {
+      router.push("/dashboard/AllEntries");
+    }, 2000);
+  }
 
   return (
-    <form>
+    <form onSubmit={handleEdit}>
       <StyledEditFormContainer>
         <h2>How are you feeling today?</h2>
         {listOfSmileyOptions.map((smiley, index) => {
@@ -135,10 +136,7 @@ export default function EditForm({ formData, setFormData, entry }) {
             onChange={handleMessageChange}
           />
         </>
-        <button
-          type="submit"
-          // onClick={handleEdit}
-        >
+        <button>
           Done! <IoCheckmarkDoneCircleOutline />
         </button>
       </StyledEditFormContainer>
