@@ -9,11 +9,12 @@ import { Heading } from "@/components/Header/StyledHeader";
 const FormDetailsEdit = ({ formData, setFormData }) => {
   const router = useRouter();
   const { id } = router.query;
+  const entry = formData.find((element) => element.id === id);
 
   return (
     <>
       <Heading>Edit you Entry:</Heading>
-      <EditForm formData={formData} setFormData={setFormData} />
+      <EditForm entry={entry} formData={formData} setFormData={setFormData} />
       <Navbar>
         <BackButton />
         <AddButton />
