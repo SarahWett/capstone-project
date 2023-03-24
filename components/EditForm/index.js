@@ -30,15 +30,12 @@ export default function EditForm({ formData, setFormData, entry }) {
   const router = useRouter();
 
   const [edit, setEdit] = useState(entry);
-  console.log(edit);
 
   function handleSmileyChange(event) {
-    console.log(event.target.value);
     setEdit({ ...edit, smiley: event.target.value });
   }
 
   function handleTagsChange(event) {
-    console.log(event.target.name);
     const keyToUpdate = event.target.name;
 
     if (edit.tags.includes(keyToUpdate)) {

@@ -10,7 +10,7 @@ const FormDetailsEdit = ({ formData, setFormData }) => {
   const router = useRouter();
   const { id } = router.query;
   const entry = formData.find((element) => element.id === id);
-  console.log("What is wroooong", entry);
+
   return (
     <>
       <Heading>Edit you Entry:</Heading>
