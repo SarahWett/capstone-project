@@ -5,15 +5,20 @@ export const Paragraph = styled.p`
   position: relative;
   font-size: 4vh;
   color: #fff;
-  font-family: "Herr Von Muellerhoff", cursive;
+  font-family: "Fasthand", cursive;
   text-align: center;
   height: 45vh;
   max-width: 100%;
   margin: 8vh 10vh 3vh 10vh;
   padding: 12vh 15vw;
-  background: rgba(199, 87, 160, 0.05);
   border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(5px);
-  border: 1px solid rgba(199, 87, 160, 0.59);
+  color: #e6e4e3;
+  background: -webkit-linear-gradient(
+    rgb(37, 45, 38) 0%,
+    rgba(215, 180, 112, 0.7) 84%
+  );
+  box-shadow: 2px 2px 8px 3px rgba(107, 110, 148, 0.8);
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
 `;

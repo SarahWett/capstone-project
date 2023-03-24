@@ -13,6 +13,9 @@ const StyledList = styled.ul`
   z-index: 100;
   margin: auto;
   align-items: center;
+  color: #172e4f;
+  background: -webkit-linear-gradient(#404f43 0%, #e6e4e3 84%);
+  box-shadow: 2px 4px 8px 3px rgba(107, 110, 148, 0.8);
 `;
 
 export default function Navbar({ children }) {

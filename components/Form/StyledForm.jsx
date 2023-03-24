@@ -16,11 +16,11 @@ export const StyledFormContainer = styled.div`
   box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
   display: flex;
   flex-direction: column;
-  background: rgba(199, 87, 160, 0.05);
+  background: rgba(140, 144, 122, 0.5);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(5px);
-  border: 1px solid rgba(199, 87, 160, 0.59);
+  border: 1px solid rgb(230, 228, 227);
 `;
 
 export const StyledHeader = styled.h1`
@@ -28,7 +28,7 @@ export const StyledHeader = styled.h1`
   place-items: center;
   padding: 1vh 5vh 1vh 5vh;
   margin: 0;
-  color: #172e4f;
+  color: #252d26;
 `;
 
 export const StyledProgressBar = styled.div`
@@ -42,8 +42,12 @@ export const StyledProgress = styled.div`
   width: 33.3%;
   height: 100%;
   border-radius: 10px;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.7), #b83d8d 61%);
-  box-shadow: 1px 2px 4px 2px rgba(246, 186, 214, 0.8);
+  background: linear-gradient(
+    to bottom,
+    rgba(230, 228, 227, 0.7),
+    rgb(255, 103, 92) 61%
+  );
+  box-shadow: 1px 2px 4px 2px rgba(37, 45, 38, 0.8);
 `;
 
 export const StyledPageDisplay = styled.div`
@@ -83,7 +87,7 @@ export const StyledFooter = styled.div`
 `;
 
 export const StyledSavedText = styled.h1`
-  color: #172e4f;
+  color: #d7b470;
   font-family: "Roboto", sans-serif;
   margin-top: 14vh;
   font-size: 3.5rem;
@@ -92,13 +96,14 @@ export const StyledSavedText = styled.h1`
 export const StyledSavedTextContainer = styled.div`
   text-align: center;
   height: 60vh;
+  color: #e6e4e3;
   letter-spacing: 8px;
   padding: 3vh 5vh 3vh 5vh;
-  background: rgba(53, 95, 151, 0.26);
+  background: rgba(37, 45, 38, 0.54);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(9.9px);
-  border: 1px solid rgba(53, 95, 151, 0.15);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(37, 45, 38, 0.3);
   margin: 3.5vh;
 `;
 

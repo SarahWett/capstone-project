@@ -24,17 +24,17 @@ const DashboardCard = styled.div`
   height: 20vh;
   margin: 2vh 1vh 1vh 1vh;
   padding: 5vh;
-  background: rgba(53, 95, 151, 0.26);
+  background: rgba(128, 131, 115, 0.26);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(9.9px);
   border: 1px solid rgba(53, 95, 151, 0.15);
   &:hover {
-    background: rgba(53, 95, 151, 0.5);
+    background: rgb(53, 4, 0, 0.5);
     transition: background-color 0.5s ease;
   }
   &:active {
-    background: #b83d8d;
+    background: rgb(37, 45, 38);
   }
 `;
 

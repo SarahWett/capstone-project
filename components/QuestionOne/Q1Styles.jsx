@@ -22,8 +22,3 @@ export const StyledInput = styled.input`
   align-items: flex-end;
   justify-content: center;
 `;
-
-// export const StyledIcon = styled.div`
-//   display: flex;
-//   flex-direction: row;
-// `;

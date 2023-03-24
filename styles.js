@@ -9,7 +9,7 @@ export default createGlobalStyle`
   body {
     margin: 0;
     font-family: system-ui;
-    background-image: url("https://images.pexels.com/photos/2310713/pexels-photo-2310713.jpeg?auto=compress&cs=tinysrgb&w=1200");
+    background-image: url("https://images.unsplash.com/photo-1629217898100-4b28f4653506?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1029&q=80");
     background-repeat:  no-repeat;
     background-size: cover;
     background-attachment: fixed;
