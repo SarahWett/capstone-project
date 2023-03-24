@@ -3,19 +3,17 @@ import styled from "styled-components";
 const StyledFooterButton = styled.button`
   width: 100px;
   height: 40px;
-  background-color: #355f97;
   font-weight: bold;
   color: white;
   border: 0.5px solid white;
   border-radius: 15px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
-    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.7), #355f97 61%);
+  box-shadow: 1px 2px 4px 2px rgba(107, 110, 148, 0.8);
   padding: 10px 5px;
   margin: 10px 5px;
   margin: 5px;
   &:disabled {
-    background-color: #d7d4ed;
+    background: rgba(255, 255, 255, 0.7);
   }
 `;
 

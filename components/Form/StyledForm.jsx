@@ -41,7 +41,9 @@ export const StyledProgressBar = styled.div`
 export const StyledProgress = styled.div`
   width: 33.3%;
   height: 100%;
-  background-color: #b83d8d;
+  border-radius: 10px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.7), #b83d8d 61%);
+  box-shadow: 1px 2px 4px 2px rgba(246, 186, 214, 0.8);
 `;
 
 export const StyledPageDisplay = styled.div`
@@ -54,15 +56,20 @@ export const StyledPageDisplay = styled.div`
 `;
 
 export const CancelButton = styled.button`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   width: 100px;
-  height: 5vh;
-  background-color: #b83d8d;
+  height: 6vh;
+  border: none;
   color: white;
   border-radius: 10px;
-  border: 0.5px solid white;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
-    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.7), #ab2424 61%);
+  box-shadow: 1px 2px 4px 2px rgba(246, 186, 214, 0.8);
+  &:hover {
+    background: #ab2424;
+  }
 `;
 
 export const StyledFooter = styled.div`
@@ -76,8 +83,6 @@ export const StyledFooter = styled.div`
 `;
 
 export const StyledSavedText = styled.h1`
-  /* padding: 15vh;
-  margin: 0; */
   color: #172e4f;
   font-family: "Roboto", sans-serif;
   margin-top: 14vh;
