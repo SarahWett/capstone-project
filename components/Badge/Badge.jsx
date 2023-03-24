@@ -10,10 +10,6 @@ const StyledBadge = styled.span`
   background-color: #fff;
   color: #292528;
   font-weight: 400;
-  &:active {
-    background-color: #fff;
-    color: black;
-  }
 `;
 export default function Badge({ children, isActive }) {
   return (
