@@ -16,6 +16,7 @@ import {
 
 export default function Entry({
   smiley,
+  icon,
   message,
   date,
   tags,
@@ -37,7 +38,10 @@ export default function Entry({
       <StyledEntryContent>
         <StyledEntrySmileyContainer>
           <h2>
-            <StyledSmileySection>{smiley}</StyledSmileySection>
+            <StyledSmileySection>
+              {icon}
+              {smiley}
+            </StyledSmileySection>
           </h2>
         </StyledEntrySmileyContainer>
         <StyledNotes>{message}</StyledNotes>

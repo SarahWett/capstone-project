@@ -7,10 +7,18 @@ import {
   StyledHeading,
   StyledDiv,
   StyledDoneButton,
+  StyledSmileySection,
+  StyledLabel,
 } from "./EditStyles";
 import { StyledEditFormContainer } from "./EditStyles";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import {
+  BsEmojiLaughing,
+  BsEmojiSmile,
+  BsEmojiExpressionless,
+  BsEmojiFrown,
+} from "react-icons/bs";
 import Navbar from "../Navigation";
 
 const listOfTagOptions = [
@@ -25,11 +33,49 @@ const listOfTagOptions = [
   { tagName: "Walk" },
 ];
 
+// const [iconColor, setIconColor] = useState("#252D26");
+
 const listOfSmileyOptions = [
-  { smileyName: "awesome" },
-  { smileyName: "good" },
-  { smileyName: "okay" },
-  { smileyName: "aweful" },
+  {
+    smileyName: "awesome",
+    icon: (
+      <BsEmojiLaughing
+        size={"2em"}
+        color={"#252D26"}
+        // onClick={() => setIconColor("#D7B470")}
+      />
+    ),
+  },
+  {
+    smileyName: "good",
+    icon: (
+      <BsEmojiSmile
+        size={"2em"}
+        color={"#252D26"}
+        // onClick={() => setIconColor("#D7B470")}
+      />
+    ),
+  },
+  {
+    smileyName: "okay",
+    icon: (
+      <BsEmojiExpressionless
+        size={"2em"}
+        color={"#252D26"}
+        // onClick={() => setIconColor("#D7B470")}
+      />
+    ),
+  },
+  {
+    smileyName: "aweful",
+    icon: (
+      <BsEmojiFrown
+        size={"2em"}
+        color={"#252D26"}
+        // onClick={() => setIconColor("#D7B470")}
+      />
+    ),
+  },
 ];
 
 export default function EditForm({ formData, setFormData, entry }) {
@@ -105,13 +151,13 @@ export default function EditForm({ formData, setFormData, entry }) {
               >
                 <path
                   d="M12 21C14.0822 21 16.1 20.278 17.7095 18.9571C19.3191 17.6362 20.4209 15.798 20.8271 13.7558C21.2333 11.7136 20.9188 9.59376 19.9373 7.75743C18.9558 5.9211 17.3679 4.48191 15.4442 3.68508C13.5205 2.88826 11.38 2.78311 9.38744 3.38754C7.3949 3.99197 5.67358 5.26858 4.51677 6.99987C3.35997 8.73115 2.83925 10.81 3.04334 12.8822C3.24743 14.9543 4.1637 16.8916 5.63604 18.364"
-                  stroke="#B83D8D"
+                  stroke="#FF675C"
                   strokeWidth="2"
                   strokeLinecap="round"
                 />
                 <path
                   d="M16 10L12.402 14.3175C11.7465 15.1042 11.4187 15.4976 10.9781 15.5176C10.5375 15.5375 10.1755 15.1755 9.45139 14.4514L8 13"
-                  stroke="#B83D8D"
+                  stroke="#FF675C"
                   strokeWidth="2"
                   strokeLinecap="round"
                 />
@@ -124,11 +170,12 @@ export default function EditForm({ formData, setFormData, entry }) {
         <form onSubmit={handleEdit}>
           <StyledEditFormContainer>
             <StyledHeading>How are you feeling today?</StyledHeading>
-            <StyledDiv>
+            <StyledSmileySection>
               {listOfSmileyOptions.map((smiley, index) => {
-                const { smileyName } = smiley;
+                const { smileyName, icon } = smiley;
                 return (
-                  <label key={index} htmlFor={smileyName}>
+                  <StyledLabel key={index} htmlFor={smileyName}>
+                    {icon}
                     {smileyName}
                     <input
                       checked={edit?.smiley === smileyName}
@@ -139,10 +186,10 @@ export default function EditForm({ formData, setFormData, entry }) {
                       required={true}
                       onChange={handleSmileyChange}
                     />
-                  </label>
+                  </StyledLabel>
                 );
               })}
-            </StyledDiv>
+            </StyledSmileySection>
             <StyledHeading>What did you deal with?</StyledHeading>
             <StyledDiv>
               {listOfTagOptions.map(({ tagName }) => {
