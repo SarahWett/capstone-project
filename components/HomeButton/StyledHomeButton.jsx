@@ -7,4 +7,8 @@ export const StyledHomeLink = styled.li`
   border-radius: 20%;
   list-style: none;
   padding: 0.2vh 1.5vh;
+  &:hover {
+    transform: scale(1.1, 1.1);
+    border: none;
+  }
 `;

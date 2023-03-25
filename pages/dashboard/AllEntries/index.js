@@ -33,10 +33,11 @@ const StyledBatch = styled.div`
   font-size: 16px;
   font-weight: 600;
   transition: background-color 0.2s ease-in-out;
-  background-color: transparent;
+  background-color: rgba(140, 144, 122, 0.4);
   margin: 10px 30px;
   padding: 10px 16px;
   border-radius: 999px;
+  border-bottom: 2px solid #8c907a;
 `;
 
 export default function EntriesSection({

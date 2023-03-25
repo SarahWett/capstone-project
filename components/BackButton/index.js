@@ -7,6 +7,10 @@ const StyledBackButton = styled.button`
   border: 1px solid #fff;
   border-radius: 20%;
   padding: 0.4vh 3vh;
+  &:hover {
+    transform: scale(1.1, 1.1);
+    border: none;
+  }
 `;
 
 export default function BackButton() {
