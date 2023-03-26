@@ -28,6 +28,10 @@ const StyledDateSection = styled.div`
   margin-top: 1vh;
 `;
 
+const StyledLineChart = styled.div`
+  margin-top: 7vh;
+`;
+
 export default function MoodLine({ formData }) {
   const [startDate, setStartDate] = useState(new Date("2023-03-01"));
   const [endDate, setEndDate] = useState(new Date());
@@ -74,7 +78,7 @@ export default function MoodLine({ formData }) {
 
   return (
     <>
-      <Heading>Your Mood-Bar:</Heading>
+      <Heading>Your Mood-Line:</Heading>
       <StyledChart>
         <StyledDateSection>
           <label>Start Date:</label>
@@ -92,7 +96,7 @@ export default function MoodLine({ formData }) {
             onChange={(event) => setEndDate(new Date(event.target.value))}
           />
         </StyledDateSection>
-        <div>
+        <StyledLineChart>
           <LineChart
             chartData={chartData}
             options={{
@@ -105,7 +109,7 @@ export default function MoodLine({ formData }) {
               },
             }}
           />
-        </div>
+        </StyledLineChart>
       </StyledChart>
       <Navbar>
         <BackButton />

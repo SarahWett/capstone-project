@@ -13,8 +13,23 @@ import BackButton from "@/components/BackButton";
 import HomeButton from "@/components/HomeButton";
 import AddButton from "@/components/AddButton";
 import styled from "styled-components";
+import { keyframes } from "styled-components";
 
 Chart.register(CategoryScale, LinearScale, BarController, BarElement);
+
+const SliderAnimation = keyframes`
+slide-in {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}`;
+
+const Slider = styled.div`
+  animation: ${SliderAnimation} 0.5s ease-out;
+`;
 
 const StyledChart = styled.div`
   display: flex;
@@ -110,7 +125,7 @@ export default function MoodBar({ formData }) {
   const mostClickedSmileyColor = SMILEY_COLORS[mostClickedSmiley];
 
   return (
-    <>
+    <Slider>
       <Heading>Your Mood-Bar:</Heading>
       <StyledChart>
         <StyledDateSection>
@@ -144,6 +159,6 @@ export default function MoodBar({ formData }) {
         <AddButton />
         <HomeButton />
       </Navbar>
-    </>
+    </Slider>
   );
 }
