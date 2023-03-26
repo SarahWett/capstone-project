@@ -33,48 +33,22 @@ const listOfTagOptions = [
   { tagName: "Walk" },
 ];
 
-// const [iconColor, setIconColor] = useState("#252D26");
-
 const listOfSmileyOptions = [
   {
     smileyName: "awesome",
-    icon: (
-      <BsEmojiLaughing
-        size={"2em"}
-        color={"#252D26"}
-        // onClick={() => setIconColor("#D7B470")}
-      />
-    ),
+    icon: <BsEmojiLaughing size={"2em"} color={"#252D26"} />,
   },
   {
     smileyName: "good",
-    icon: (
-      <BsEmojiSmile
-        size={"2em"}
-        color={"#252D26"}
-        // onClick={() => setIconColor("#D7B470")}
-      />
-    ),
+    icon: <BsEmojiSmile size={"2em"} color={"#252D26"} />,
   },
   {
     smileyName: "okay",
-    icon: (
-      <BsEmojiExpressionless
-        size={"2em"}
-        color={"#252D26"}
-        // onClick={() => setIconColor("#D7B470")}
-      />
-    ),
+    icon: <BsEmojiExpressionless size={"2em"} color={"#252D26"} />,
   },
   {
     smileyName: "aweful",
-    icon: (
-      <BsEmojiFrown
-        size={"2em"}
-        color={"#252D26"}
-        // onClick={() => setIconColor("#D7B470")}
-      />
-    ),
+    icon: <BsEmojiFrown size={"2em"} color={"#252D26"} />,
   },
 ];
 
