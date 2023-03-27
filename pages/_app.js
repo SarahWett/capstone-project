@@ -3,13 +3,11 @@ import Head from "next/head";
 import { useState } from "react";
 import { uid } from "uid";
 import useLocalStorageState from "use-local-storage-state";
-import { BsEmojiLaughing } from "react-icons/bs";
 
 export default function App({ Component, pageProps }) {
   const [formData, setFormData] = useLocalStorageState("data", {
     defaultValue: [
       {
-        icon: <BsEmojiLaughing />,
         smiley: "awesome",
         tags: ["Family"],
 

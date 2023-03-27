@@ -30,7 +30,7 @@ const DashboardCard = styled.div`
   backdrop-filter: blur(9.9px);
   border: 1px solid rgba(53, 95, 151, 0.15);
   &:hover {
-    background: rgb(53, 4, 0, 0.5);
+    background: rgba(206, 164, 80, 0.6);
     transition: background-color 0.5s ease;
   }
   &:active {
@@ -54,12 +54,12 @@ export default function DashCards({ formData, setFormData, entries }) {
           <h2>All Entries</h2>
         </DashboardCard>
       </StyledLink>
-      <StyledLink href="">
+      <StyledLink href="dashboard/Mood-Bar">
         <DashboardCard>
           <h2>Mood-Bar</h2>
         </DashboardCard>
       </StyledLink>
-      <StyledLink href="">
+      <StyledLink href="dashboard/Mood-Line">
         <DashboardCard>
           <h2>Mood-Line</h2>
         </DashboardCard>

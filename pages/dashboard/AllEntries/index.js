@@ -7,6 +7,7 @@ import BackButton from "@/components/BackButton";
 import AddButton from "@/components/AddButton";
 import HomeButton from "@/components/HomeButton";
 import styled from "styled-components";
+import DBButton from "@/components/DashboardButton";
 
 const StyledSection = styled.section`
   display: flex;
@@ -78,7 +79,7 @@ export default function EntriesSection({
         </StyledEntries>
       </StyledSection>
       <Navbar>
-        <BackButton />
+        <DBButton />
         <AddButton />
         <HomeButton />
       </Navbar>

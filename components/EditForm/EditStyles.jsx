@@ -41,7 +41,8 @@ export const StyledTagsInput = styled.label`
   width: 25vw;
   &:active,
   &:checked {
-    background: rgba(184, 61, 141, 0.87);
+    background: rgb(53, 4, 0);
+    color:rgb(210, 200, 199)
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(8.7px);
