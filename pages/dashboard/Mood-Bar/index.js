@@ -101,6 +101,26 @@ export default function MoodBar({ formData }) {
     aweful: "#FF675C",
   };
 
+  const options = {
+    scales: {
+      y: {
+        grid: {
+          display: true,
+        },
+      },
+      x: {
+        grid: {
+          display: false,
+        },
+      },
+    },
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
+  };
+
   const chartData = {
     labels: ["awesome", "good", "okay", "aweful"],
     datasets: [
@@ -145,7 +165,7 @@ export default function MoodBar({ formData }) {
           />
         </StyledDateSection>
         <StyledBar>
-          <BarChart chartData={chartData} />
+          <BarChart chartData={chartData} options={options} />
         </StyledBar>
         <StyledPara>
           In this period of time your mood was most:{" "}

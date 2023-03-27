@@ -20,9 +20,13 @@ export const StyledDate = styled.time`
   align-items: center;
   font-size: 14px;
   font-weight: 600;
-  color: #252d26;
+  color: #ececea;
   border-radius: 16px;
-  background: linear-gradient(to bottom, rgb(204, 161, 73), #ff675c 61%);
+  background: linear-gradient(
+    to bottom,
+    rgb(204, 161, 73),
+    rgba(92, 112, 94, 1) 61%
+  );
   box-shadow: rgb(230, 228, 227) 3px 3px 6px 0px inset,
     #252d26 -3px -3px 6px 1px inset;
   height: 4vh;

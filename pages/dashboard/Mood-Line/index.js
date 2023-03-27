@@ -44,14 +44,6 @@ export default function MoodLine({ formData }) {
     );
   });
 
-  const countBySmiley = filteredData.reduce((acc, entry) => {
-    if (!acc[entry.smiley]) {
-      acc[entry.smiley] = 0;
-    }
-    acc[entry.smiley]++;
-    return acc;
-  }, {});
-
   const SMILEY_LABELS = ["aweful", "okay", "good", "awesome"];
 
   const SMILEY_COLORS = {
@@ -64,23 +56,45 @@ export default function MoodLine({ formData }) {
   const options = {
     animations: {
       tension: {
-        duration: 1000,
+        duration: 4000,
         easing: "linear",
         from: 1,
         to: 0,
-        loop: true,
+        loop: false,
       },
     },
     scales: {
       y: {
         ticks: {
-          callback: (value, index) => SMILEY_LABELS[index],
+          callback: function (value, index, values) {
+            return SMILEY_LABELS[value];
+          },
+          stepSize: 1,
+          min: 0,
+          max: 3,
         },
-        min: 0,
-        max: 100,
+        grid: {
+          display: true,
+        },
+      },
+      x: {
+        grid: {
+          display: false,
+        },
+      },
+    },
+
+    plugins: {
+      title: {
+        display: true,
+        text: "Your personal Mood-Line",
+      },
+      legend: {
+        display: false,
       },
     },
   };
+
   const chartData = {
     labels: filteredData.map((entry) =>
       new Date(entry.date).toLocaleDateString()
