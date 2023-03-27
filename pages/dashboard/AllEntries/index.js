@@ -85,7 +85,7 @@ export default function EntriesSection({
     );
     setFilteredEntriesCount(filteredEntries.length);
   }, [formData, selectedTag]);
-  console.log(formData);
+
   return (
     <>
       <Heading>Your Mood:</Heading>
