@@ -1,13 +1,12 @@
-import { Fragment } from "react";
 import Badge from "@/components/Badge/Badge";
 import { Heading } from "@/components/Header/StyledHeader";
 import Navbar from "@/components/Navigation";
 import Entry from "@/components/Entry";
-import BackButton from "@/components/BackButton";
 import AddButton from "@/components/AddButton";
 import HomeButton from "@/components/HomeButton";
 import styled from "styled-components";
 import DBButton from "@/components/DashboardButton";
+import { useState } from "react";
 
 const StyledSection = styled.section`
   display: flex;
@@ -41,17 +40,30 @@ const StyledBatch = styled.div`
   border-bottom: 2px solid #8c907a;
 `;
 
+const StyledFilter = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const StyledSelect = styled.select`
+  border-radius: 22px;
+  border: 1px solid #ececea;
+  padding: 2vw;
+  background-color: #d7b470;
+  width: 35vw;
+`;
+
 export default function EntriesSection({
   filter,
-  data,
   formData,
   setFormData,
-  id,
-  tags,
   allEntriesCount,
   setEntries,
   entries,
 }) {
+  const [selectedTag, setSelectedTag] = useState("");
+  const tags = formData[0].tags;
+  console.log(formData);
   return (
     <>
       <Heading>Your Mood:</Heading>
@@ -60,22 +72,40 @@ export default function EntriesSection({
           All Entries{""}
           <Badge isActive={filter === "all"}>{allEntriesCount}</Badge>
         </StyledBatch>
+        <StyledFilter>
+          <StyledSelect
+            value={selectedTag}
+            onChange={(e) => setSelectedTag(e.target.value)}
+          >
+            <option value="">Filter by Tag</option>
+            {tags &&
+              tags?.map((tag) => (
+                <option key={tag} value={tag}>
+                  {tag}
+                </option>
+              ))}
+          </StyledSelect>
+        </StyledFilter>
         <StyledEntries>
-          {formData?.map((data) => (
-            <Entry
-              key={data.id}
-              smiley={data.smiley}
-              icon={data.icon}
-              message={data.message}
-              date={data.date}
-              tags={data.tags}
-              id={data.id}
-              entries={entries}
-              setEntries={setEntries}
-              formData={formData}
-              setFormData={setFormData}
-            />
-          ))}
+          {formData
+            ?.filter(
+              (data) => selectedTag === "" || data.tags.includes(selectedTag)
+            )
+            .map((data) => (
+              <Entry
+                key={data.id}
+                smiley={data.smiley}
+                icon={data.icon}
+                message={data.message}
+                date={data.date}
+                tags={data.tags}
+                id={data.id}
+                entries={entries}
+                setEntries={setEntries}
+                formData={formData}
+                setFormData={setFormData}
+              />
+            ))}
         </StyledEntries>
       </StyledSection>
       <Navbar>

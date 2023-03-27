@@ -61,6 +61,26 @@ export default function MoodLine({ formData }) {
     aweful: "#FF675C",
   };
 
+  const options = {
+    animations: {
+      tension: {
+        duration: 1000,
+        easing: "linear",
+        from: 1,
+        to: 0,
+        loop: true,
+      },
+    },
+    scales: {
+      y: {
+        ticks: {
+          callback: (value, index) => SMILEY_LABELS[index],
+        },
+        min: 0,
+        max: 100,
+      },
+    },
+  };
   const chartData = {
     labels: filteredData.map((entry) =>
       new Date(entry.date).toLocaleDateString()
@@ -97,18 +117,7 @@ export default function MoodLine({ formData }) {
           />
         </StyledDateSection>
         <StyledLineChart>
-          <LineChart
-            chartData={chartData}
-            options={{
-              scales: {
-                y: {
-                  ticks: {
-                    callback: (value, index) => SMILEY_LABELS[index],
-                  },
-                },
-              },
-            }}
-          />
+          <LineChart chartData={chartData} options={options} />
         </StyledLineChart>
       </StyledChart>
       <Navbar>
