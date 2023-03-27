@@ -1,14 +1,7 @@
 import { StyledLabel, StyledSmileyInputs } from "./Q1Styles";
 import { StyledInput } from "./Q1Styles";
 
-export default function Smileys({
-  formData,
-  setFormData,
-  listOfOptions,
-  entries,
-  smiley,
-  setEntries,
-}) {
+export default function Smileys({ entries, setEntries, listOfSmileyOptions }) {
   function handleOnChange(event) {
     const updatedEntry = { ...entries[0], smiley: event.target.value };
     setEntries([updatedEntry]);
@@ -16,7 +9,7 @@ export default function Smileys({
 
   return (
     <StyledSmileyInputs>
-      {listOfOptions.map((smiley, index) => {
+      {listOfSmileyOptions.map((smiley, index) => {
         const { smileyName, icon } = smiley;
         return (
           <StyledLabel key={index} htmlFor={smileyName}>

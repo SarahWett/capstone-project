@@ -20,13 +20,13 @@ import {
   StyledSavedTextContainer,
   StyledConfirmButton,
 } from "./StyledForm";
-import { uid } from "uid";
 import {
   BsEmojiLaughing,
   BsEmojiSmile,
   BsEmojiExpressionless,
   BsEmojiFrown,
 } from "react-icons/bs";
+import { uid } from "uid";
 
 export default function Form({
   formData,
@@ -36,6 +36,7 @@ export default function Form({
   setEntries,
   handleAddEntry,
   id,
+  listOfSmileyOptions,
 }) {
   const [page, setPage] = useState(0);
 
@@ -61,7 +62,7 @@ export default function Form({
             setEntries={setEntries}
             setFormData={setFormData}
             onAddEntry={handleAddEntry}
-            listOfOptions={[
+            listOfSmileyOptions={[
               {
                 smileyName: "awesome",
                 icon: <BsEmojiLaughing size={"2em"} color={"#252D26"} />,
