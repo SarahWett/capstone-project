@@ -6,7 +6,7 @@ import AddButton from "@/components/AddButton";
 import HomeButton from "@/components/HomeButton";
 import styled from "styled-components";
 import DBButton from "@/components/DashboardButton";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const StyledSection = styled.section`
   display: flex;
@@ -20,6 +20,9 @@ const StyledEntries = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 32px;
+  & > * {
+    order: -1;
+  }
 `;
 
 const StyledBatch = styled.div`
@@ -52,6 +55,17 @@ const StyledSelect = styled.select`
   background-color: #d7b470;
   width: 35vw;
 `;
+const listOfTagOptions = [
+  { tagName: "Family" },
+  { tagName: "Friends" },
+  { tagName: "Partner" },
+  { tagName: "Work" },
+  { tagName: "Hobby" },
+  { tagName: "Household" },
+  { tagName: "TV" },
+  { tagName: "Sports" },
+  { tagName: "Walk" },
+];
 
 export default function EntriesSection({
   filter,
@@ -62,7 +76,15 @@ export default function EntriesSection({
   entries,
 }) {
   const [selectedTag, setSelectedTag] = useState("");
-  const tags = formData[0].tags;
+  const tags = listOfTagOptions;
+  const [filteredEntriesCount, setFilteredEntriesCount] =
+    useState(allEntriesCount);
+  useEffect(() => {
+    const filteredEntries = formData.filter(
+      (data) => selectedTag === "" || data.tags.includes(selectedTag)
+    );
+    setFilteredEntriesCount(filteredEntries.length);
+  }, [formData, selectedTag]);
   console.log(formData);
   return (
     <>
@@ -70,7 +92,9 @@ export default function EntriesSection({
       <StyledSection className="entries-section">
         <StyledBatch>
           All Entries{""}
-          <Badge isActive={filter === "all"}>{allEntriesCount}</Badge>
+          <Badge isActive={filter === "all"}>
+            {selectedTag === "" ? allEntriesCount : filteredEntriesCount}
+          </Badge>
         </StyledBatch>
         <StyledFilter>
           <StyledSelect
@@ -78,12 +102,11 @@ export default function EntriesSection({
             onChange={(e) => setSelectedTag(e.target.value)}
           >
             <option value="">Filter by Tag</option>
-            {tags &&
-              tags?.map((tag) => (
-                <option key={tag} value={tag}>
-                  {tag}
-                </option>
-              ))}
+            {tags?.map((tag) => (
+              <option key={tag.tagName} value={tag.tagName}>
+                {tag.tagName}
+              </option>
+            ))}
           </StyledSelect>
         </StyledFilter>
         <StyledEntries>
@@ -91,6 +114,7 @@ export default function EntriesSection({
             ?.filter(
               (data) => selectedTag === "" || data.tags.includes(selectedTag)
             )
+            .sort((a, b) => new Date(b.date) - new Date(a.date))
             .map((data) => (
               <Entry
                 key={data.id}
