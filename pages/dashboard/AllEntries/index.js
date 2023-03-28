@@ -7,6 +7,7 @@ import HomeButton from "@/components/HomeButton";
 import styled from "styled-components";
 import DBButton from "@/components/DashboardButton";
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 const StyledSection = styled.section`
   display: flex;
@@ -109,28 +110,37 @@ export default function EntriesSection({
             ))}
           </StyledSelect>
         </StyledFilter>
-        <StyledEntries>
-          {formData
-            ?.filter(
-              (data) => selectedTag === "" || data.tags.includes(selectedTag)
-            )
-            .sort((a, b) => new Date(b.date) - new Date(a.date))
-            .map((data) => (
-              <Entry
-                key={data.id}
-                smiley={data.smiley}
-                icon={data.icon}
-                message={data.message}
-                date={data.date}
-                tags={data.tags}
-                id={data.id}
-                entries={entries}
-                setEntries={setEntries}
-                formData={formData}
-                setFormData={setFormData}
-              />
-            ))}
-        </StyledEntries>
+
+        <motion.div
+          initial={{ y: 25, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{
+            duration: 0.75,
+          }}
+        >
+          <StyledEntries>
+            {formData
+              ?.filter(
+                (data) => selectedTag === "" || data.tags.includes(selectedTag)
+              )
+              .sort((a, b) => new Date(b.date) - new Date(a.date))
+              .map((data) => (
+                <Entry
+                  key={data.id}
+                  smiley={data.smiley}
+                  icon={data.icon}
+                  message={data.message}
+                  date={data.date}
+                  tags={data.tags}
+                  id={data.id}
+                  entries={entries}
+                  setEntries={setEntries}
+                  formData={formData}
+                  setFormData={setFormData}
+                />
+              ))}
+          </StyledEntries>
+        </motion.div>
       </StyledSection>
       <Navbar>
         <DBButton />

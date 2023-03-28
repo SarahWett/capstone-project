@@ -1,5 +1,4 @@
 import { StyledInput } from "./Q2Styles";
-import { uid } from "uid";
 
 export default function Tags({
   entries,

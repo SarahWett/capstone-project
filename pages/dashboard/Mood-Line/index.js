@@ -6,6 +6,7 @@ import BackButton from "@/components/BackButton";
 import HomeButton from "@/components/HomeButton";
 import { useState } from "react";
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 const StyledChart = styled.div`
   display: flex;
@@ -113,27 +114,36 @@ export default function MoodLine({ formData }) {
   return (
     <>
       <Heading>Your Mood-Line:</Heading>
-      <StyledChart>
-        <StyledDateSection>
-          <label>Start Date:</label>
-          <input
-            type="date"
-            value={startDate.toISOString().substr(0, 10)}
-            onChange={(event) => setStartDate(new Date(event.target.value))}
-          />
-        </StyledDateSection>
-        <StyledDateSection>
-          <label>End Date:</label>
-          <input
-            type="date"
-            value={endDate.toISOString().substr(0, 10)}
-            onChange={(event) => setEndDate(new Date(event.target.value))}
-          />
-        </StyledDateSection>
-        <StyledLineChart>
-          <LineChart chartData={chartData} options={options} />
-        </StyledLineChart>
-      </StyledChart>
+      <motion.div
+        initial={{ y: 25, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{
+          duration: 0.75,
+        }}
+        className="nav-bar"
+      >
+        <StyledChart>
+          <StyledDateSection>
+            <label>Start Date:</label>
+            <input
+              type="date"
+              value={startDate.toISOString().substr(0, 10)}
+              onChange={(event) => setStartDate(new Date(event.target.value))}
+            />
+          </StyledDateSection>
+          <StyledDateSection>
+            <label>End Date:</label>
+            <input
+              type="date"
+              value={endDate.toISOString().substr(0, 10)}
+              onChange={(event) => setEndDate(new Date(event.target.value))}
+            />
+          </StyledDateSection>
+          <StyledLineChart>
+            <LineChart chartData={chartData} options={options} />
+          </StyledLineChart>
+        </StyledChart>
+      </motion.div>
       <Navbar>
         <BackButton />
         <AddButton />

@@ -14,6 +14,7 @@ import HomeButton from "@/components/HomeButton";
 import AddButton from "@/components/AddButton";
 import styled from "styled-components";
 import { keyframes } from "styled-components";
+import { motion } from "framer-motion";
 
 Chart.register(CategoryScale, LinearScale, BarController, BarElement);
 
@@ -147,33 +148,42 @@ export default function MoodBar({ formData }) {
   return (
     <Slider>
       <Heading>Your Mood-Bar:</Heading>
-      <StyledChart>
-        <StyledDateSection>
-          <label>Start Date:</label>
-          <input
-            type="date"
-            value={startDate.toISOString().substr(0, 10)}
-            onChange={(event) => setStartDate(new Date(event.target.value))}
-          />
-        </StyledDateSection>
-        <StyledDateSection>
-          <label>End Date:</label>
-          <input
-            type="date"
-            value={endDate.toISOString().substr(0, 10)}
-            onChange={(event) => setEndDate(new Date(event.target.value))}
-          />
-        </StyledDateSection>
-        <StyledBar>
-          <BarChart chartData={chartData} options={options} />
-        </StyledBar>
-        <StyledPara>
-          In this period of time your mood was most:{" "}
-          <span style={{ color: mostClickedSmileyColor }}>
-            {mostClickedSmiley}
-          </span>
-        </StyledPara>
-      </StyledChart>
+      <motion.div
+        initial={{ y: 25, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{
+          duration: 0.75,
+        }}
+        className="nav-bar"
+      >
+        <StyledChart>
+          <StyledDateSection>
+            <label>Start Date:</label>
+            <input
+              type="date"
+              value={startDate.toISOString().substr(0, 10)}
+              onChange={(event) => setStartDate(new Date(event.target.value))}
+            />
+          </StyledDateSection>
+          <StyledDateSection>
+            <label>End Date:</label>
+            <input
+              type="date"
+              value={endDate.toISOString().substr(0, 10)}
+              onChange={(event) => setEndDate(new Date(event.target.value))}
+            />
+          </StyledDateSection>
+          <StyledBar>
+            <BarChart chartData={chartData} options={options} />
+          </StyledBar>
+          <StyledPara>
+            In this period of time your mood was most:{" "}
+            <span style={{ color: mostClickedSmileyColor }}>
+              {mostClickedSmiley}
+            </span>
+          </StyledPara>
+        </StyledChart>
+      </motion.div>
       <Navbar>
         <BackButton />
         <AddButton />
