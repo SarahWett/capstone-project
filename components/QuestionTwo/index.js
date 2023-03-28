@@ -1,5 +1,4 @@
 import { StyledInput } from "./Q2Styles";
-import { uid } from "uid";
 
 export default function Tags({
   entries,
@@ -39,16 +38,18 @@ export default function Tags({
         const lowerCaseTagName = tagName.toLowerCase();
 
         return (
-          <StyledInput htmlFor={lowerCaseTagName} key={lowerCaseTagName}>
-            {tagName}
-            <input
-              type="checkbox"
-              id={lowerCaseTagName}
-              name={tagName}
-              checked={entries[0].tags.includes(tagName)}
-              onChange={handleOnChange}
-            />
-          </StyledInput>
+          <>
+            <StyledInput htmlFor={lowerCaseTagName} key={lowerCaseTagName}>
+              {tagName}
+              <input
+                type="checkbox"
+                id={lowerCaseTagName}
+                name={tagName}
+                checked={entries[0].tags.includes(tagName)}
+                onChange={handleOnChange}
+              />
+            </StyledInput>
+          </>
         );
       })}
     </>
