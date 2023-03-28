@@ -70,7 +70,7 @@ export default function App({ Component, pageProps }) {
     };
   }, []);
 
-  return loading ? (
+  return loading > 1 ? (
     <PageLoader />
   ) : (
     <>

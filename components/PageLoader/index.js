@@ -17,13 +17,16 @@ const Loader = styled.div`
   backdrop-filter: blur(5px);
   border: 1px solid rgb(230, 228, 227);
 `;
-
+const StyledLottie = styled(Lottie)`
+  width: 100%;
+  margin-top: 6vh;
+`;
 export default function PageLoader() {
   return (
     <>
       <Heading>Let us move..</Heading>
       <Loader>
-        <Lottie animationData={animationData} loop />
+        <StyledLottie animationData={animationData} loop />
       </Loader>
     </>
   );
