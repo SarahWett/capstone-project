@@ -2,10 +2,11 @@ import styled from "styled-components";
 import { Heading } from "../Header/StyledHeader";
 import Lottie from "lottie-react";
 import animationData from "../../public/101075-thoughts.json";
+
 const Loader = styled.div`
   margin-top: 5vh;
   width: 360px;
-  height: 400px;
+  height: 80vh;
   border-radius: 8px;
   box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
   display: flex;
