@@ -1,7 +1,7 @@
-import Navbar from "@/components/Navigation";
-import { Heading } from "@/components/Header/StyledHeader";
-import TextParagraph from "@/components/TextParagraph";
-import NavItems from "@/components/NavItems/index.js";
+import Navbar from "../components/Navigation";
+import { Heading } from "../components/Header/StyledHeader";
+import TextParagraph from "../components/TextParagraph";
+import NavItems from "../components/NavItems/index.js";
 import { motion } from "framer-motion";
 
 export default function Home({ formData, setFormdata, onAddEntry }) {
