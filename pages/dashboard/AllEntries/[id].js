@@ -1,10 +1,10 @@
 import { useRouter } from "next/router";
-import Navbar from "@/components/Navigation";
-import BackButton from "@/components/BackButton";
-import AddButton from "@/components/AddButton";
-import HomeButton from "@/components/HomeButton";
-import EditForm from "@/components/EditForm";
-import { Heading } from "@/components/Header/StyledHeader";
+import Navbar from "../../../components/Navigation";
+import BackButton from "../../../components/BackButton";
+import AddButton from "../../../components/AddButton";
+import HomeButton from "../../../components/HomeButton";
+import EditForm from "../../../components/EditForm";
+import { Heading } from "../../../components/Header/StyledHeader";
 
 const FormDetailsEdit = ({ formData, setFormData }) => {
   const router = useRouter();
