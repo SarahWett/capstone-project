@@ -86,10 +86,6 @@ export default function MoodLine({ formData }) {
     },
 
     plugins: {
-      title: {
-        display: true,
-        text: "Your personal Mood-Line",
-      },
       legend: {
         display: false,
       },

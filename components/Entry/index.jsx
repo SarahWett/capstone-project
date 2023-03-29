@@ -1,5 +1,8 @@
 import { MdEdit } from "react-icons/md";
 import router from "next/router";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { AiFillCheckCircle } from "react-icons/ai";
 import {
   StyledDate,
   StyledEntry,
@@ -12,6 +15,11 @@ import {
   StyledTags,
   StyledEditButton,
   ButtonContent,
+  StyledPopUp,
+  DangerZone,
+  StyledAiFillCheckCircle,
+  StyledPopUpButtons,
+  StyledPopButtonContainer,
 } from "./EntryStyles";
 
 export default function Entry({
@@ -27,9 +35,18 @@ export default function Entry({
   entries,
   entry,
 }) {
-  function handleDelete(idToRemove) {
-    alert("Are you sure you want to delete this entry?");
+  const [showModal, setShowModal] = useState(false);
+
+  const handleConfirmDelete = (idToRemove) => {
     setFormData(formData.filter((data) => data.id !== idToRemove));
+    setShowModal(false);
+  };
+  const handleCancelDelete = () => {
+    setShowModal(false);
+  };
+
+  function handleDelete() {
+    setShowModal(true);
   }
 
   return (
@@ -52,9 +69,35 @@ export default function Entry({
         </StyledTagsContainer>
       </StyledEntryContent>
       <ButtonContent>
-        <StyledDeleteButton type="button" onClick={() => handleDelete(id)}>
+        {/* <StyledDeleteButton type="button" onClick={() => handleDelete(id)}>
           X
-        </StyledDeleteButton>
+        </StyledDeleteButton> */}
+        <div>
+          <StyledDeleteButton onClick={() => handleDelete(id)}>
+            X
+          </StyledDeleteButton>
+          {showModal && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <StyledPopUp>
+                <DangerZone>DangerZone</DangerZone>
+                <p>Are you sure you want to delete this entry?</p>
+                <StyledPopButtonContainer>
+                  <StyledPopUpButtons onClick={() => handleConfirmDelete(id)}>
+                    Yes
+                    <StyledAiFillCheckCircle />
+                  </StyledPopUpButtons>
+                  <StyledPopUpButtons onClick={handleCancelDelete}>
+                    No
+                  </StyledPopUpButtons>
+                </StyledPopButtonContainer>
+              </StyledPopUp>
+            </motion.div>
+          )}
+        </div>
         <StyledEditButton
           type="button"
           onClick={() => router.push(`/dashboard/AllEntries/${id}`)}

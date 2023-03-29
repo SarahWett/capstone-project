@@ -1,25 +1,14 @@
-import styled from "styled-components";
 import { useRouter } from "next/router";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
-
-const StyledBackButton = styled.button`
-  color: #fff;
-  border: 1px solid #fff;
-  border-radius: 20%;
-  padding: 0.4vh 3vh;
-  &:hover {
-    transform: scale(1.1, 1.1);
-    border: none;
-  }
-`;
+import { StyledBackButton } from "./BackButton.styles";
 
 export default function BackButton() {
   const router = useRouter();
   return (
     <StyledBackButton onClick={() => router.back()}>
       <svg
-        width="24"
-        height="24"
+        width="32"
+        height="32"
         viewBox="0 0 24 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
