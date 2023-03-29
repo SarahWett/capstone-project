@@ -1,17 +1,5 @@
 import Link from "next/link";
-import styled from "styled-components";
-
-const StyledNavLink = styled.li`
-  background: #f2f2f2;
-  border: 1px solid #fff;
-  border-radius: 50%;
-  list-style: none;
-  padding: 3%;
-  &:hover {
-    background: #e6e4e3;
-    transform: scale(1.1);
-  }
-`;
+import { StyledNavLink } from "./AddButton.styles";
 
 export default function AddButton() {
   return (

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 const StyledTextarea = styled.textarea`
-  width: 100%;
+  width: 160%;
 `;
 
 const Message = ({ entries, setEntries }) => {

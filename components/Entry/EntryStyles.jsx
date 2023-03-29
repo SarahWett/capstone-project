@@ -1,10 +1,11 @@
 import styled from "styled-components";
+import { AiFillCheckCircle } from "react-icons/ai";
 
 export const StyledEntry = styled.article`
   display: flex;
   flex-direction: column;
   gap: 30px;
-  padding: 16vw;
+  padding: 10vh;
   width: 80vw;
   background: rgba(255, 255, 255, 0.25);
   border-radius: 16px;
@@ -96,12 +97,13 @@ export const ButtonContent = styled.div`
 `;
 
 export const StyledDeleteButton = styled.button`
-  display: flex;
-  border-radius: 20%;
-  justify-content: center;
+  display: absolute;
+  top: 1px;
+  border-radius: 50%;
   align-self: center;
+  justify-self: flex-start;
   align-items: center;
-  width: 30vw;
+  width: 8vw;
   height: 8vw;
   background-color: #a92121;
   color: antiquewhite;
@@ -160,4 +162,46 @@ export const StyledEditButton = styled.button`
     box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px,
       rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
   }
+`;
+export const DangerZone = styled.h3`
+  color: #fff;
+`;
+
+export const StyledPopUp = styled.div`
+  position: absolute;
+  top: 39vh;
+  right: 0vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 5vh;
+  background: rgba(255, 103, 92, 1);
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+    rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
+    rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
+    rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  z-index: 999; /* ensure the popup appears on top of everything else */
+  border-radius: 16px;
+  width: 80vw;
+  height: 25vh;
+`;
+
+export const StyledPopButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 4vh;
+  margin-top: 1vh;
+`;
+
+export const StyledPopUpButtons = styled.button`
+  border: none;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+`;
+
+export const StyledAiFillCheckCircle = styled(AiFillCheckCircle)`
+  color: #849a85;
 `;

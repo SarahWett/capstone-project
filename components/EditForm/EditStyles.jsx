@@ -41,13 +41,14 @@ export const StyledTagsInput = styled.label`
   width: 25vw;
   &:active,
   &:checked {
-    background: rgb(53, 4, 0);
+    background: #FF675C;
     color:rgb(210, 200, 199)
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(8.7px);
     border: 1px solid rgba(184, 61, 141, 0.23);
   }
+ 
 `;
 
 export const StyledHeading = styled.h1`
@@ -127,6 +128,15 @@ export const StyledSmileySection = styled.div`
   gap: 4vh;
   align-items: center;
   margin-left: 8vw;
+  &.selected {
+    background-color: rgba(226, 226, 223, 0.8);
+    border-radius: 15px;
+    padding: 1vh;
+    width: 50vw;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+      rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+      rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  }
 `;
 
 export const StyledLabel = styled.label`

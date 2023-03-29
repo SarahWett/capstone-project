@@ -55,6 +55,7 @@ const listOfSmileyOptions = [
 
 export default function EditForm({ formData, setFormData, entry }) {
   const router = useRouter();
+  const [selectedSmiley, setSelectedSmiley] = useState("");
 
   const [showSavedPage, setShowSavedPage] = useState(false);
 
@@ -62,6 +63,7 @@ export default function EditForm({ formData, setFormData, entry }) {
 
   function handleSmileyChange(event) {
     setEdit({ ...edit, smiley: event.target.value });
+    setSelectedSmiley(event.target.value);
   }
 
   function handleTagsChange(event) {
@@ -156,7 +158,13 @@ export default function EditForm({ formData, setFormData, entry }) {
                 {listOfSmileyOptions.map((smiley, index) => {
                   const { smileyName, icon } = smiley;
                   return (
-                    <StyledLabel key={index} htmlFor={smileyName}>
+                    <StyledLabel
+                      className={
+                        selectedSmiley === smileyName ? "selected" : ""
+                      }
+                      key={index}
+                      htmlFor={smileyName}
+                    >
                       {icon}
                       {smileyName}
                       <input

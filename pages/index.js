@@ -8,6 +8,7 @@ export default function Home({ formData, setFormdata, onAddEntry }) {
   return (
     <main>
       <Heading>MoodMeUp</Heading>
+
       <motion.div
         initial={{ y: 25, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
