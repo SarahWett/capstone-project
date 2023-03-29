@@ -2,9 +2,9 @@ import styled from "styled-components";
 import Lottie from "lottie-react";
 
 export const Loader = styled.div`
-  margin-top: 5vh;
-  width: 360px;
-  height: 80vh;
+  margin-top: 12vh;
+  width: 100vw;
+  height: 60vh;
   border-radius: 8px;
   box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
   display: flex;
@@ -17,5 +17,4 @@ export const Loader = styled.div`
 `;
 export const StyledLottie = styled(Lottie)`
   width: 100%;
-  margin-top: 6vh;
 `;
