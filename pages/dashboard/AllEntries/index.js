@@ -1,12 +1,13 @@
-import Badge from "@/components/Badge/Badge";
-import { Heading } from "@/components/Header/StyledHeader";
-import Navbar from "@/components/Navigation";
-import Entry from "@/components/Entry";
-import AddButton from "@/components/AddButton";
-import HomeButton from "@/components/HomeButton";
-import DBButton from "@/components/DashboardButton";
+import Badge from "../../../components/Badge/Badge";
+import { Heading } from "../../../components/Header/StyledHeader";
+import Navbar from "../../../components/Navigation/index";
+import Entry from "../../../components/Entry";
+import AddButton from "../../../components/AddButton";
+import HomeButton from "../../../components/HomeButton";
+import DBButton from "../../../components/DashboardButton";
 import { useState, useEffect } from "react";
-import { motion, useScroll } from "framer-motion";
+import { motion } from "framer-motion";
+
 import {
   StyledSection,
   StyledBatch,
@@ -14,7 +15,7 @@ import {
   StyledSelect,
   StyledEntries,
 } from "./AllEntries.styles";
-import PageLoader from "@/components/PageLoader";
+import PageLoader from "../../../components/PageLoader";
 
 const listOfTagOptions = [
   { tagName: "Family" },
