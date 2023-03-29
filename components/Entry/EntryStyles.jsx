@@ -165,11 +165,13 @@ export const StyledEditButton = styled.button`
 `;
 export const DangerZone = styled.h3`
   color: #fff;
+  margin-bottom: 0;
+  margin-top: 2vw;
 `;
 
 export const StyledPopUp = styled.div`
   position: absolute;
-  top: 39vh;
+  top: 45vh;
   right: 0vh;
   display: flex;
   align-items: center;
@@ -185,7 +187,7 @@ export const StyledPopUp = styled.div`
   z-index: 999; /* ensure the popup appears on top of everything else */
   border-radius: 16px;
   width: 80vw;
-  height: 25vh;
+  height: 24vh;
 `;
 
 export const StyledPopButtonContainer = styled.div`
