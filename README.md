@@ -47,3 +47,13 @@ First of all: **This is a capstone project for [neuefische](https://www.neuefisc
 ### `Project Demo:`
 
 You can find the deployed demo-version on Vercel: [MoodMeUp Demo](https://capstone-project-5l4dvya4w-sarahwett.vercel.app/)
+
+## `How to setup?`
+
+- Clone this repository
+- Install all dependencies with `$ npm install`
+- create a Cloudinary account and change the cloudname in the App.js
+- insert your API_Key, API_Secret and Cloudname as an enviroment variable in the terminal
+- Run app in dev mode with `$ npm run dev`
+- Server: [http://localhost:3000/](http://localhost:3000/)
+- Run tests via `$ npm run test`
