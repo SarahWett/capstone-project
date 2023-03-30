@@ -5,7 +5,7 @@ import { StyledBackButton } from "./BackButton.styles";
 export default function BackButton() {
   const router = useRouter();
   return (
-    <StyledBackButton onClick={() => router.back()}>
+    <StyledBackButton aria-label="Back" onClick={() => router.back()}>
       <svg
         width="32"
         height="32"

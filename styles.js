@@ -6,6 +6,12 @@ export default createGlobalStyle`
   *::after {
     box-sizing: border-box;
   }
+
+  html{
+    scroll-behavior: smooth;
+    scroll-padding-top: 75px;
+  }
+
   body {
     margin: 0;
     font-family: system-ui;

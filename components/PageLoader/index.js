@@ -7,8 +7,12 @@ export default function PageLoader() {
   return (
     <>
       <Heading>Let us move..</Heading>
-      <Loader>
-        <StyledLottie animationData={animationData} loop />
+      <Loader aria-labelledby="animated-loading-image">
+        <StyledLottie
+          id="animated-loading-image"
+          animationData={animationData}
+          loop
+        />
       </Loader>
     </>
   );

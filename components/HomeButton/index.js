@@ -6,7 +6,7 @@ export default function HomeButton() {
   const router = useRouter();
   const isHomePage = router.pathname === "/";
   return (
-    <StyledHomeLink filled={isHomePage}>
+    <StyledHomeLink aria-label="home" filled={isHomePage}>
       <Link href={"/"}>
         <svg
           width="40"

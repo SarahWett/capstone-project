@@ -30,6 +30,8 @@ export default function Smileys({ entries, setEntries, listOfSmileyOptions }) {
               name="radio"
               value={smileyName}
               required={true}
+              aria-required="true"
+              aria-label={smileyName}
               onChange={handleOnChange}
             />
           </StyledLabel>

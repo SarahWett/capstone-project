@@ -7,7 +7,7 @@ export default function DBButton() {
   const isDashboardPage = router.pathname === "/dashboard";
 
   return (
-    <StyledDBLink filled={isDashboardPage}>
+    <StyledDBLink aria-label="dashboard" filled={isDashboardPage}>
       <Link href="/dashboard">
         <svg
           width="40"

@@ -151,9 +151,11 @@ export default function EditForm({ formData, setFormData, entry }) {
             <Navbar />
           </>
         ) : (
-          <form onSubmit={handleEdit}>
+          <form aria-labelledby="edit-form-heading" onSubmit={handleEdit}>
             <StyledEditFormContainer>
-              <StyledHeading>How are you feeling today?</StyledHeading>
+              <StyledHeading id="edit-form-heading">
+                How are you feeling today?
+              </StyledHeading>
               <StyledSmileySection>
                 {listOfSmileyOptions.map((smiley, index) => {
                   const { smileyName, icon } = smiley;
@@ -175,6 +177,7 @@ export default function EditForm({ formData, setFormData, entry }) {
                         value={smileyName}
                         required={true}
                         onChange={handleSmileyChange}
+                        aria-label="Smileys"
                       />
                     </StyledLabel>
                   );
@@ -198,6 +201,7 @@ export default function EditForm({ formData, setFormData, entry }) {
                         value={lowerCaseTagName}
                         checked={edit?.tags.includes(tagName)}
                         onChange={handleTagsChange}
+                        aria-label="Tags"
                       />
                     </StyledTagsInput>
                   );
@@ -218,6 +222,7 @@ export default function EditForm({ formData, setFormData, entry }) {
                     name="message"
                     required
                     onChange={handleMessageChange}
+                    aria-label="Message"
                   />
                 </StyledDiv>
               </>
