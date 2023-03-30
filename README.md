@@ -1,38 +1,49 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## 🙇🏻‍♀️ `MoodMeUp!`
 
-## Getting Started
+> "MoodMeUp!" is a personal mood-tracker to track your mood over a period of time
 
-First, run the development server:
+<img width="719" alt="Bildschirm­foto 2023-03-30 um 10 57 12" src="https://user-images.githubusercontent.com/104009848/228785788-4a54b214-d275-40ba-9272-d80ee0f5ac61.png">
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+> You can add & filter for some habits to easily detect the dependencies between mood & habit
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<img width="914" alt="Bildschirm­foto 2023-03-30 um 10 56 07" src="https://user-images.githubusercontent.com/104009848/228786361-9aa62d3a-8da8-45fd-965d-ebc4e6394965.png">
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## `Dive a bit more into details:`
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+First of all: **This is a capstone project for [neuefische](https://www.neuefische.de/) web development bootcamp.**
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+**What can you do with this app?**
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- track your mood & habits
+- add some additional text to explain your feelings
+- edit your former entries afterwards
+- delete former entries
+- filter chart data by date
+- filter entries for specific habit
 
-## Learn More
+**Why is this useful?**
 
-To learn more about Next.js, take a look at the following resources:
+- it helps detecting the dependencies between habits & your mood
+- it helps to get an overview of your average mood and habits
+- it helps to reflect about your daily behavior and feelings
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## `TechStack:`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- React.js
+- Next.js
+- Jest Testing
+- Framer Motion
+- Styled Components
+- Git
+- Node.js
+- React Router
+- Vercel
 
-## Deploy on Vercel
+## `Prototyping & Design Stack:`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Figma
+- Excallidraw
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### `Project Demo:`
+
+You can find the deployed demo-version on Vercel: [MoodMeUp Demo](https://capstone-project-5l4dvya4w-sarahwett.vercel.app/)
