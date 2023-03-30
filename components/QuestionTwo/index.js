@@ -46,6 +46,7 @@ export default function Tags({
               name={tagName}
               checked={entries[0].tags.includes(tagName)}
               onChange={handleOnChange}
+              aria-label={tagName}
             />
           </StyledInput>
         );

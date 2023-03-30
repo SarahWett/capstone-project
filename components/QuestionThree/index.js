@@ -26,6 +26,7 @@ const Message = ({ entries, setEntries }) => {
           id="message"
           name="message"
           required
+          aria-label="message"
           onChange={handleOnChange}
         />
       </motion.div>

@@ -80,6 +80,7 @@ export default function Form({
                 icon: <BsEmojiFrown size={"2em"} color={"#252D26"} />,
               },
             ]}
+            aria-label="Smileys"
           />
 
           <StyledFooter>
@@ -90,6 +91,7 @@ export default function Form({
               onClick={() => {
                 setPage((currentPage) => currentPage + 1);
               }}
+              aria-label="Go to next page"
             >
               Next
             </FormButton>
@@ -117,6 +119,7 @@ export default function Form({
               { tagName: "Sports" },
               { tagName: "Walk" },
             ]}
+            aria-label="Tags"
           />
           <StyledFooter>
             <FormButton
@@ -125,6 +128,7 @@ export default function Form({
               onClick={() => {
                 setPage((currentPage) => currentPage - 1);
               }}
+              aria-label="Go to previous page"
             >
               Prev
             </FormButton>
@@ -134,6 +138,7 @@ export default function Form({
               onClick={() => {
                 setPage((currentPage) => currentPage + 1);
               }}
+              aria-label="Go to next page"
             >
               Next
             </FormButton>
@@ -158,12 +163,14 @@ export default function Form({
               onClick={() => {
                 setPage((currentPage) => currentPage - 1);
               }}
+              aria-label="Go to previous page"
             >
               Prev
             </FormButton>
             <StyledConfirmButton
               type="submit"
               disabled={page !== FormTitles.length - 1}
+              aria-label="Confirm"
             >
               Confirm
             </StyledConfirmButton>
@@ -235,7 +242,7 @@ export default function Form({
               duration: 0.75,
             }}
           >
-            <StyledForm onSubmit={handleSubmit}>
+            <StyledForm aria-labelledby="form-heading" onSubmit={handleSubmit}>
               <StyledProgressBar>
                 <StyledProgress
                   style={{
@@ -245,7 +252,9 @@ export default function Form({
               </StyledProgressBar>
               <StyledFormContainer>
                 <div>
-                  <StyledHeader>{FormTitles[page]}</StyledHeader>
+                  <StyledHeader id="form-heading">
+                    {FormTitles[page]}
+                  </StyledHeader>
                 </div>
                 <StyledPageDisplay>{PageDisplay()}</StyledPageDisplay>
               </StyledFormContainer>
@@ -253,7 +262,7 @@ export default function Form({
           </motion.div>
           <Navbar>
             <Link href="/">
-              <CancelButton type="button">
+              <CancelButton aria-label="Cancel" type="button">
                 <svg
                   width="24"
                   height="24"
