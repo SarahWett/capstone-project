@@ -45,13 +45,13 @@ export default function MoodLine({ formData }) {
     );
   });
 
-  const SMILEY_LABELS = ["aweful", "okay", "good", "awesome"];
+  const SMILEY_LABELS = ["awful", "okay", "good", "awesome"];
 
   const SMILEY_COLORS = {
     awesome: "#5C705E",
     good: "#849A86",
     okay: "#CEA450",
-    aweful: "#FF675C",
+    awful: "#FF675C",
   };
 
   const options = {

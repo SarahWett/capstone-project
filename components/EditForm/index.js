@@ -48,7 +48,7 @@ const listOfSmileyOptions = [
     icon: <BsEmojiExpressionless size={"2em"} color={"#252D26"} />,
   },
   {
-    smileyName: "aweful",
+    smileyName: "awful",
     icon: <BsEmojiFrown size={"2em"} color={"#252D26"} />,
   },
 ];

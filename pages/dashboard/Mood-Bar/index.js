@@ -99,7 +99,7 @@ export default function MoodBar({ formData }) {
     awesome: "#5C705E",
     good: "#849A86",
     okay: "#CEA450",
-    aweful: "#FF675C",
+    awful: "#FF675C",
   };
 
   const options = {
@@ -123,7 +123,7 @@ export default function MoodBar({ formData }) {
   };
 
   const chartData = {
-    labels: ["awesome", "good", "okay", "aweful"],
+    labels: ["awesome", "good", "okay", "awful"],
     datasets: [
       {
         label: "Mood",
@@ -131,13 +131,13 @@ export default function MoodBar({ formData }) {
           countBySmiley.awesome || 0,
           countBySmiley.good || 0,
           countBySmiley.okay || 0,
-          countBySmiley.aweful || 0,
+          countBySmiley.awful || 0,
         ],
         backgroundColor: [
           SMILEY_COLORS.awesome,
           SMILEY_COLORS.good,
           SMILEY_COLORS.okay,
-          SMILEY_COLORS.aweful,
+          SMILEY_COLORS.awful,
         ],
       },
     ],

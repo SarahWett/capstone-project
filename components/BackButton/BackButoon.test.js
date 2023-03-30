@@ -14,7 +14,7 @@ describe("BackButton component", () => {
     });
   });
 
-  it("renders the back button icon", () => {
+  it("renders the back button", () => {
     render(<BackButton />);
     const backButtonIcon = screen.getByRole("button");
     expect(backButtonIcon).toBeInTheDocument();
