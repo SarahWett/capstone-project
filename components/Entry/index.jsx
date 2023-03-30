@@ -29,11 +29,8 @@ export default function Entry({
   date,
   tags,
   id,
-  setEntries,
   setFormData,
   formData,
-  entries,
-  entry,
 }) {
   const [showModal, setShowModal] = useState(false);
 
@@ -69,9 +66,6 @@ export default function Entry({
         </StyledTagsContainer>
       </StyledEntryContent>
       <ButtonContent>
-        {/* <StyledDeleteButton type="button" onClick={() => handleDelete(id)}>
-          X
-        </StyledDeleteButton> */}
         <div>
           <StyledDeleteButton onClick={() => handleDelete(id)}>
             X
