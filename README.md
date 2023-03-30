@@ -27,6 +27,10 @@ First of all: **This is a capstone project for [neuefische](https://www.neuefisc
 - it helps to get an overview of your average mood and habits
 - it helps to reflect about your daily behavior and feelings
 
+https://user-images.githubusercontent.com/104009848/228813280-267d75c5-afcd-428f-af0c-ab93070af5e2.mov
+
+
+
 ## `TechStack:`
 
 - React.js
