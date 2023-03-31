@@ -6,12 +6,18 @@ export default function AddButton() {
     <StyledNavLink aria-label="add">
       <Link aria-label="add new entry" href={"/survey"}>
         <svg
+          aria-labelledby="addTitle addDesc"
           width="60"
           height="60"
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
+          <title id="addTitle">Filled Add Button</title>
+          <desc id="addDesc">
+            An illustrated rounded add button displayed as a plus sign with
+            light lines and a golden background
+          </desc>
           <path
             fillRule="evenodd"
             clipRule="evenodd"
