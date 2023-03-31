@@ -20,12 +20,6 @@ import {
   StyledSavedTextContainer,
   StyledConfirmButton,
 } from "./StyledForm";
-import {
-  BsEmojiLaughing,
-  BsEmojiSmile,
-  BsEmojiExpressionless,
-  BsEmojiFrown,
-} from "react-icons/bs";
 import { motion } from "framer-motion";
 
 export default function Form({
@@ -37,6 +31,7 @@ export default function Form({
   handleAddEntry,
   id,
   listOfSmileyOptions,
+  listOfTagOptions,
 }) {
   const [page, setPage] = useState(0);
 
@@ -62,24 +57,7 @@ export default function Form({
             setEntries={setEntries}
             setFormData={setFormData}
             onAddEntry={handleAddEntry}
-            listOfSmileyOptions={[
-              {
-                smileyName: "awesome",
-                icon: <BsEmojiLaughing size={"2em"} color={"#252D26"} />,
-              },
-              {
-                smileyName: "good",
-                icon: <BsEmojiSmile size={"2em"} color={"#252D26"} />,
-              },
-              {
-                smileyName: "okay",
-                icon: <BsEmojiExpressionless size={"2em"} color={"#252D26"} />,
-              },
-              {
-                smileyName: "awful",
-                icon: <BsEmojiFrown size={"2em"} color={"#252D26"} />,
-              },
-            ]}
+            listOfSmileyOptions={listOfSmileyOptions}
             aria-label="Smileys"
           />
 
@@ -108,17 +86,7 @@ export default function Form({
             id={id}
             setEntries={setEntries}
             onAddEntry={handleAddEntry}
-            listOfOptions={[
-              { tagName: "Family" },
-              { tagName: "Friends" },
-              { tagName: "Partner" },
-              { tagName: "Work" },
-              { tagName: "Hobby" },
-              { tagName: "Household" },
-              { tagName: "TV" },
-              { tagName: "Sports" },
-              { tagName: "Walk" },
-            ]}
+            listOfTagOptions={listOfTagOptions}
             aria-label="Tags"
           />
           <StyledFooter>
