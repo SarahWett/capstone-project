@@ -4,7 +4,7 @@ import { StyledNavLink } from "./AddButton.styles";
 export default function AddButton() {
   return (
     <StyledNavLink aria-label="add">
-      <Link href={"/survey"}>
+      <Link aria-label="add new entry" href={"/survey"}>
         <svg
           width="60"
           height="60"

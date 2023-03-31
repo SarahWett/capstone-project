@@ -8,7 +8,7 @@ export default function DBButton() {
 
   return (
     <StyledDBLink aria-label="dashboard" filled={isDashboardPage}>
-      <Link href="/dashboard">
+      <Link aria-label="got to dashboard" href="/dashboard">
         <svg
           width="40"
           height="40"
