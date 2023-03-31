@@ -147,7 +147,7 @@ export default function MoodBar({ formData }) {
 
   return (
     <Slider>
-      <Heading>Your Mood-Bar:</Heading>
+      <Heading aria-labelledby="barchart">Your Mood-Bar:</Heading>
       <motion.div
         initial={{ y: 25, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -160,6 +160,7 @@ export default function MoodBar({ formData }) {
           <StyledDateSection>
             <label>Start Date:</label>
             <input
+              aria-label="starting date"
               type="date"
               value={startDate.toISOString().substr(0, 10)}
               onChange={(event) => setStartDate(new Date(event.target.value))}
@@ -168,13 +169,14 @@ export default function MoodBar({ formData }) {
           <StyledDateSection>
             <label>End Date:</label>
             <input
+              aria-label="ending date"
               type="date"
               value={endDate.toISOString().substr(0, 10)}
               onChange={(event) => setEndDate(new Date(event.target.value))}
             />
           </StyledDateSection>
           <StyledBar>
-            <BarChart chartData={chartData} options={options} />
+            <BarChart id="barchart" chartData={chartData} options={options} />
           </StyledBar>
           <StyledPara>
             In this period of time your mood was most:{" "}
