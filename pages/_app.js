@@ -5,6 +5,12 @@ import useLocalStorageState from "use-local-storage-state";
 import { useState, useEffect } from "react";
 import Router from "next/router";
 import PageLoader from "../components/PageLoader";
+import {
+  BsEmojiLaughing,
+  BsEmojiSmile,
+  BsEmojiExpressionless,
+  BsEmojiFrown,
+} from "react-icons/bs";
 
 export default function App({ Component, pageProps }) {
   const [formData, setFormData] = useLocalStorageState("data", {
@@ -13,7 +19,7 @@ export default function App({ Component, pageProps }) {
         smiley: "awesome",
         tags: ["Family"],
 
-        message: "FooBar",
+        message: "Wonderfulday comingup!:)",
 
         date: new Date().toLocaleDateString("en-us", {
           dateStyle: "medium",
@@ -70,6 +76,38 @@ export default function App({ Component, pageProps }) {
     };
   }, []);
 
+  //REFACTORING
+  const listOfSmileyOptions = [
+    {
+      smileyName: "awesome",
+      icon: <BsEmojiLaughing size={"2em"} color={"#252D26"} />,
+    },
+    {
+      smileyName: "good",
+      icon: <BsEmojiSmile size={"2em"} color={"#252D26"} />,
+    },
+    {
+      smileyName: "okay",
+      icon: <BsEmojiExpressionless size={"2em"} color={"#252D26"} />,
+    },
+    {
+      smileyName: "awful",
+      icon: <BsEmojiFrown size={"2em"} color={"#252D26"} />,
+    },
+  ];
+
+  const listOfTagOptions = [
+    { tagName: "Family" },
+    { tagName: "Friends" },
+    { tagName: "Partner" },
+    { tagName: "Work" },
+    { tagName: "Hobby" },
+    { tagName: "Household" },
+    { tagName: "TV" },
+    { tagName: "Sports" },
+    { tagName: "Walk" },
+  ];
+
   return loading > 1 ? (
     <PageLoader />
   ) : (
@@ -87,6 +125,8 @@ export default function App({ Component, pageProps }) {
         allEntriesCount={formData.length}
         entries={entries}
         setEntries={setEntries}
+        listOfSmileyOptions={listOfSmileyOptions}
+        listOfTagOptions={listOfTagOptions}
       />
     </>
   );

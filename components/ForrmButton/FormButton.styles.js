@@ -14,6 +14,7 @@ export const StyledFooterButton = styled.button`
   box-shadow: 2px 4px 8px 3px rgba(107, 110, 148, 0.8);
   position: relative;
   z-index: 1;
+
   &::after {
     content: "";
     position: absolute;

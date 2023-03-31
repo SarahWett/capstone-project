@@ -13,47 +13,17 @@ import {
 import { StyledEditFormContainer } from "./EditStyles";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import {
-  BsEmojiLaughing,
-  BsEmojiSmile,
-  BsEmojiExpressionless,
-  BsEmojiFrown,
-} from "react-icons/bs";
+
 import Navbar from "../Navigation";
 import { motion } from "framer-motion";
 
-const listOfTagOptions = [
-  { tagName: "Family" },
-  { tagName: "Friends" },
-  { tagName: "Partner" },
-  { tagName: "Work" },
-  { tagName: "Hobby" },
-  { tagName: "Household" },
-  { tagName: "TV" },
-  { tagName: "Sports" },
-  { tagName: "Walk" },
-];
-
-const listOfSmileyOptions = [
-  {
-    smileyName: "awesome",
-    icon: <BsEmojiLaughing size={"2em"} color={"#252D26"} />,
-  },
-  {
-    smileyName: "good",
-    icon: <BsEmojiSmile size={"2em"} color={"#252D26"} />,
-  },
-  {
-    smileyName: "okay",
-    icon: <BsEmojiExpressionless size={"2em"} color={"#252D26"} />,
-  },
-  {
-    smileyName: "awful",
-    icon: <BsEmojiFrown size={"2em"} color={"#252D26"} />,
-  },
-];
-
-export default function EditForm({ formData, setFormData, entry }) {
+export default function EditForm({
+  formData,
+  setFormData,
+  entry,
+  listOfSmileyOptions,
+  listOfTagOptions,
+}) {
   const router = useRouter();
   const [selectedSmiley, setSelectedSmiley] = useState("");
 

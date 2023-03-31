@@ -10,6 +10,8 @@ export default function Survey({
   entries,
   setEntries,
   id,
+  listOfSmileyOptions,
+  listOfTagOptions,
 }) {
   return (
     <>
@@ -21,6 +23,8 @@ export default function Survey({
         entries={entries}
         setEntries={setEntries}
         id={id}
+        listOfSmileyOptions={listOfSmileyOptions}
+        listOfTagOptions={listOfTagOptions}
       />
     </>
   );

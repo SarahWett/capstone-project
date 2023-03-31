@@ -5,7 +5,7 @@ export default function Tags({
   setEntries,
   formData,
   setFormData,
-  listOfOptions,
+  listOfTagOptions,
   id,
 }) {
   function handleOnChange(event) {
@@ -34,7 +34,7 @@ export default function Tags({
 
   return (
     <>
-      {listOfOptions.map(({ tagName }) => {
+      {listOfTagOptions.map(({ tagName }) => {
         const lowerCaseTagName = tagName.toLowerCase();
 
         return (

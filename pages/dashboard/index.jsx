@@ -4,7 +4,13 @@ import NavItems from "@/components/NavItems";
 import DashCards from "@/components/DashboardCards";
 import { motion } from "framer-motion";
 
-export default function DashboardOverview({ formData, setFormData, entries }) {
+export default function DashboardOverview({
+  formData,
+  setFormData,
+  entries,
+  listOfSmileyOptions,
+  listOfTagOptions,
+}) {
   return (
     <>
       <Header>Dashboard</Header>
@@ -20,6 +26,8 @@ export default function DashboardOverview({ formData, setFormData, entries }) {
           formData={formData}
           setFormData={setFormData}
           entries={entries}
+          listOfSmileyOptions={listOfSmileyOptions}
+          listOfTagOptions={listOfTagOptions}
         />
       </motion.div>
       <Navbar>

@@ -2,7 +2,6 @@ import { MdEdit } from "react-icons/md";
 import router from "next/router";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { AiFillCheckCircle } from "react-icons/ai";
 import {
   StyledDate,
   StyledEntry,
