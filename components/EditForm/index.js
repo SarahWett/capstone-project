@@ -13,12 +13,7 @@ import {
 import { StyledEditFormContainer } from "./EditStyles";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import {
-  BsEmojiLaughing,
-  BsEmojiSmile,
-  BsEmojiExpressionless,
-  BsEmojiFrown,
-} from "react-icons/bs";
+
 import Navbar from "../Navigation";
 import { motion } from "framer-motion";
 
