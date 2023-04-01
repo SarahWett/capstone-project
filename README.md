@@ -11,7 +11,8 @@
 ## `Dive a bit more into details:`
 
 First of all: **This is a capstone project for [neuefische](https://www.neuefische.de/) web development bootcamp.**
-**mobile device only**
+
+!**mobile device only**!
 
 **What can you do with this app?**
 
